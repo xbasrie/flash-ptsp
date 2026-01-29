@@ -93,6 +93,34 @@ class ServiceSeeder extends Seeder
                 'is_active' => true,
             ]
         );
+
+        // Layanan KUB
+        Service::firstOrCreate(
+            ['slug' => 'kub-pendirian'],
+            [
+                'name' => 'Izin Pendirian Rumah Ibadah',
+                'description' => 'Layanan rekomendasi izin pendirian rumah ibadah.',
+                'is_active' => true,
+            ]
+        );
+
+        Service::firstOrCreate(
+            ['slug' => 'kub-rohaniawan'],
+            [
+                'name' => 'Rekomendasi Rohaniawan Asing',
+                'description' => 'Layanan rekomendasi untuk rohaniawan asing.',
+                'is_active' => true,
+            ]
+        );
+
+        Service::firstOrCreate(
+            ['slug' => 'kub-tanah'],
+            [
+                'name' => 'Rekomendasi Hak Atas Tanah',
+                'description' => 'Layanan rekomendasi kepemilikan hak atas tanah rumah ibadah.',
+                'is_active' => true,
+            ]
+        );
         
         // Add other placeholders if needed
     }

@@ -112,11 +112,105 @@
              </div>
         </main>
 
-        <footer class="bg-kemenag text-white py-6 mt-auto">
-            <div class="container mx-auto px-4 text-center">
-                <p class="text-sm opacity-90">&copy; {{ date('Y') }} PTSP FLASH - Kantor Kementerian Agama Kota Surabaya.</p>
-                <p class="text-xs mt-1 text-gold">Ikhlas Beramal</p>
+        <footer class="bg-kemenag text-white pt-16 pb-8 mt-auto border-t-4 border-yellow-500">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                    
+                    <!-- About -->
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-3">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Kementerian_Agama_new_logo.png" alt="Logo Kemenag" class="h-16 w-auto bg-white rounded-lg p-1">
+                            <div class="flex flex-col">
+                                <span class="font-bold text-lg leading-tight">Kementerian Agama</span>
+                                <span class="font-bold text-lg leading-tight">Kota Surabaya</span>
+                            </div>
+                        </div>
+                        <p class="text-green-50 text-sm leading-relaxed opacity-90">
+                            Mewujudkan masyarakat Surabaya yang taat beragama, rukun, cerdas, dan sejahtera lahir batin.
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="#" class="bg-white/10 hover:bg-yellow-500 hover:text-white p-2 rounded-lg transition-all duration-300 group">
+                                <i data-lucide="facebook" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                            </a>
+                            <a href="#" class="bg-white/10 hover:bg-yellow-500 hover:text-white p-2 rounded-lg transition-all duration-300 group">
+                                <i data-lucide="instagram" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                            </a>
+                            <a href="#" class="bg-white/10 hover:bg-yellow-500 hover:text-white p-2 rounded-lg transition-all duration-300 group">
+                                <i data-lucide="youtube" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                            </a>
+                            <a href="#" class="bg-white/10 hover:bg-yellow-500 hover:text-white p-2 rounded-lg transition-all duration-300 group">
+                                <i data-lucide="twitter" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Tautan Cepat -->
+                    <div>
+                        <h4 class="text-xl font-bold text-yellow-400 mb-6">Tautan Cepat</h4>
+                        <ul class="space-y-3 text-sm">
+                            <li><a href="#" class="hover:text-yellow-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-yellow-500/50"></i> Profil</a></li>
+                            <li><a href="#" class="hover:text-yellow-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-yellow-500/50"></i> Visi & Misi</a></li>
+                            <li><a href="#" class="hover:text-yellow-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-yellow-500/50"></i> Struktur Organisasi</a></li>
+                            <li><a href="#" class="hover:text-yellow-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-yellow-500/50"></i> Layanan Publik</a></li>
+                            <li><a href="#" class="hover:text-yellow-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-yellow-500/50"></i> PPID</a></li>
+                            <li><a href="#" class="hover:text-yellow-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-yellow-500/50"></i> Pengaduan</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Layanan -->
+                    <div>
+                        <h4 class="text-xl font-bold text-yellow-400 mb-6">Layanan</h4>
+                        <ul class="space-y-3 text-sm">
+                            <li><a href="#" class="hover:text-yellow-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-yellow-500/50"></i> Pendaftaran Haji</a></li>
+                            <li><a href="#" class="hover:text-yellow-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-yellow-500/50"></i> Sertifikasi Halal</a></li>
+                            <li><a href="#" class="hover:text-yellow-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-yellow-500/50"></i> Penyuluhan Agama</a></li>
+                            <li><a href="https://magang.kemenagsby.web.id/" class="hover:text-yellow-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-yellow-500/50"></i> Magang Kemenag Surabaya</a></li>
+                            <li><a href="https://esurat.kemenagsby.web.id/" class="hover:text-yellow-400 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-yellow-500/50"></i> E-Surat</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Kontak -->
+                    <div>
+                        <h4 class="text-xl font-bold text-yellow-400 mb-6">Kontak Kami</h4>
+                        <ul class="space-y-4 text-sm">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-yellow-400 shrink-0 mt-0.5"></i>
+                                <span class="leading-relaxed">Jl. Masjid Al-Akbar Timur No.4, Gayungan, Kec. Gayungan, Surabaya, Jawa Timur 60234</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="phone" class="w-5 h-5 text-yellow-400 shrink-0"></i>
+                                <span>(031) 8285319</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="mail" class="w-5 h-5 text-yellow-400 shrink-0"></i>
+                                <a href="mailto:admin@kemenagsby.go.id" class="hover:text-yellow-400 transition-colors">admin@kemenagsby.go.id</a>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="clock" class="w-5 h-5 text-yellow-400 shrink-0 mt-0.5"></i>
+                                <div class="flex flex-col">
+                                    <span>Senin - Kamis: 07:30 - 16:00 WIB</span>
+                                    <span>Jumat: 07:30 - 16:30 WIB</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Copyright -->
+                <div class="border-t border-white/20 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center text-sm text-green-100 gap-4">
+                    <p>&copy; {{ date('Y') }} Kementerian Agama Kota Surabaya. All rights reserved.</p>
+                    <div class="flex gap-6">
+                        <a href="#" class="hover:text-yellow-400 transition-colors">Kebijakan Privasi</a>
+                        <a href="#" class="hover:text-yellow-400 transition-colors">Syarat & Ketentuan</a>
+                    </div>
+                </div>
             </div>
         </footer>
+
+        <!-- Scripts -->
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <script>
+            lucide.createIcons();
+        </script>
     </body>
 </html>

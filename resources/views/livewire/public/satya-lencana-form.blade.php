@@ -161,31 +161,30 @@
                 </h3>
                 <div class="bg-yellow-50 p-6 rounded-xl border border-yellow-100">
                      <label class="block text-sm font-bold text-gray-800 mb-3">Satya Lencana yang diajukan</label>
-                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" x-data="{ selected: @entangle('jenis_satya_lencana') }">
-                        <label class="relative flex items-center justify-center p-4 border rounded-lg cursor-pointer transition" 
-                            :class="selected == '10' ? 'bg-white border-yellow-500 ring-2 ring-yellow-200 shadow-md' : 'border-gray-200 bg-white/50 hover:bg-white hover:border-yellow-500'">
-                            <input type="radio" x-model="selected" value="10" class="sr-only">
+                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <button type="button" wire:click="$set('jenis_satya_lencana', '10')"
+                            class="relative flex items-center justify-center p-4 border rounded-lg cursor-pointer transition focus:outline-none {{ $jenis_satya_lencana == '10' ? 'bg-white border-yellow-500 ring-2 ring-yellow-200 shadow-md transform -translate-y-1' : 'border-gray-200 bg-white/50 hover:bg-white hover:border-yellow-500' }}">
                             <div class="text-center">
                                 <span class="block font-bold text-gray-900">10 Tahun</span>
                                 <span class="block text-xs text-gray-500">Perunggu</span>
                             </div>
-                        </label>
-                         <label class="relative flex items-center justify-center p-4 border rounded-lg cursor-pointer transition"
-                            :class="selected == '20' ? 'bg-white border-yellow-500 ring-2 ring-yellow-200 shadow-md' : 'border-gray-200 bg-white/50 hover:bg-white hover:border-yellow-500'">
-                            <input type="radio" x-model="selected" value="20" class="sr-only">
+                        </button>
+
+                        <button type="button" wire:click="$set('jenis_satya_lencana', '20')"
+                            class="relative flex items-center justify-center p-4 border rounded-lg cursor-pointer transition focus:outline-none {{ $jenis_satya_lencana == '20' ? 'bg-white border-yellow-500 ring-2 ring-yellow-200 shadow-md transform -translate-y-1' : 'border-gray-200 bg-white/50 hover:bg-white hover:border-yellow-500' }}">
                             <div class="text-center">
                                 <span class="block font-bold text-gray-900">20 Tahun</span>
                                 <span class="block text-xs text-gray-500">Perak</span>
                             </div>
-                        </label>
-                         <label class="relative flex items-center justify-center p-4 border rounded-lg cursor-pointer transition"
-                            :class="selected == '30' ? 'bg-white border-yellow-500 ring-2 ring-yellow-200 shadow-md' : 'border-gray-200 bg-white/50 hover:bg-white hover:border-yellow-500'">
-                            <input type="radio" x-model="selected" value="30" class="sr-only">
+                        </button>
+
+                        <button type="button" wire:click="$set('jenis_satya_lencana', '30')"
+                            class="relative flex items-center justify-center p-4 border rounded-lg cursor-pointer transition focus:outline-none {{ $jenis_satya_lencana == '30' ? 'bg-white border-yellow-500 ring-2 ring-yellow-200 shadow-md transform -translate-y-1' : 'border-gray-200 bg-white/50 hover:bg-white hover:border-yellow-500' }}">
                             <div class="text-center">
                                 <span class="block font-bold text-gray-900">30 Tahun</span>
                                 <span class="block text-xs text-gray-500">Emas</span>
                             </div>
-                        </label>
+                        </button>
                      </div>
                      @error('jenis_satya_lencana') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
                 </div>

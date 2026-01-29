@@ -70,7 +70,7 @@
                 </a>
 
                 <!-- KUB -->
-                <a href="#" class="group block p-8 bg-white rounded-xl shadow-xl border border-transparent hover:border-green-500 transition-all duration-300 transform hover:-translate-y-2 relative overflow-hidden">
+                <a href="{{ route('layanan.kub') }}" class="group block p-8 bg-white rounded-xl shadow-xl border border-transparent hover:border-green-500 transition-all duration-300 transform hover:-translate-y-2 relative overflow-hidden">
                      <div class="absolute top-0 right-0 -mt-6 -mr-6 w-32 h-32 bg-green-50 rounded-full opacity-50 group-hover:bg-green-100 transition-all duration-500"></div>
                      <div class="relative z-10 flex flex-col items-center text-center">
                          <div class="h-16 w-16 bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-4 group-hover:bg-green-600 group-hover:text-white transition-colors duration-300 shadow-sm">
