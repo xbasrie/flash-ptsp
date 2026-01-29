@@ -97,7 +97,7 @@ class SatyaLencanaForm extends Component
             'sk_cpns', 'sk_kp_terakhir', 'sk_jabatan_terakhir', 'drh', 'skp_2_tahun', 'piagam_terakhir'
         ]);
 
-        session()->flash('message', 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
+        $this->dispatch('show-success-modal', message: 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
     }
 
     public function render()

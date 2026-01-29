@@ -92,7 +92,7 @@ class KarisKarsuForm extends Component
             'surat_pengantar', 'sk_cpns', 'sk_pns',
             'akta_nikah', 'laporan_perkawinan', 'pasfoto']);
 
-        session()->flash('message', 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
+        $this->dispatch('show-success-modal', message: 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
     }
 
     public function render()

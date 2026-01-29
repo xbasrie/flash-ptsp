@@ -92,7 +92,7 @@ class SkppSkmiForm extends Component
             'surat_pengantar', 'sptjm', 'sk_cpns_pns', 'sk_kp_terakhir', 
             'akreditasi_prodi', 'ijazah_transkrip_legalisir']);
 
-        session()->flash('message', 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
+        $this->dispatch('show-success-modal', message: 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
     }
 
     public function render()

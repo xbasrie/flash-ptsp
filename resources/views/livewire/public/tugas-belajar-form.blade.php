@@ -78,15 +78,13 @@
         <form wire:submit.prevent="save" class="p-8 space-y-8">
             
             <!-- Type Selector -->
-            <div class="flex justify-center space-x-4 mb-8" x-data="{ type: @entangle('jenis_tugas_belajar') }">
-                <button type="button" @click="type = 'mandiri'" 
-                    :class="type === 'mandiri' ? 'bg-blue-600 text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'"
-                    class="px-6 py-3 rounded-full font-bold transition-all duration-300 focus:outline-none">
+            <div class="flex justify-center space-x-4 mb-8">
+                <button type="button" wire:click="$set('jenis_tugas_belajar', 'mandiri')" 
+                    class="px-6 py-3 rounded-full font-bold transition-all duration-300 focus:outline-none {{ $jenis_tugas_belajar === 'mandiri' ? 'bg-blue-600 text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200' }}">
                     Biaya Mandiri
                 </button>
-                 <button type="button" @click="type = 'beasiswa'" 
-                    :class="type === 'beasiswa' ? 'bg-blue-600 text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'"
-                    class="px-6 py-3 rounded-full font-bold transition-all duration-300 focus:outline-none">
+                <button type="button" wire:click="$set('jenis_tugas_belajar', 'beasiswa')" 
+                    class="px-6 py-3 rounded-full font-bold transition-all duration-300 focus:outline-none {{ $jenis_tugas_belajar === 'beasiswa' ? 'bg-blue-600 text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200' }}">
                     Beasiswa
                 </button>
             </div>

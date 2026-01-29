@@ -287,7 +287,7 @@
                     </div>
                      <div class="col-span-1">
                         <label class="block text-sm font-medium text-gray-700 mb-1">Pas Foto Suami Istri (3x4, Merah)</label>
-                        <input type="file" wire:model="pas_foto" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 transition">
+                        <input type="file" wire:model="pas_foto" accept="image/png, image/jpeg, image/jpg" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 transition">
                         @error('pas_foto') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
                     </div>
                      <div class="col-span-1">

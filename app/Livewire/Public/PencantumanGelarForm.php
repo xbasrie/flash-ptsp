@@ -108,7 +108,7 @@ class PencantumanGelarForm extends Component
             'akreditasi_jurusan', 'sk_kp_terakhir', 'sk_cpns',
             'sk_pns', 'sk_jabatan_fungsional', 'screenshot_pddikti']);
 
-        session()->flash('message', 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
+        $this->dispatch('show-success-modal', message: 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
     }
 
     public function render()

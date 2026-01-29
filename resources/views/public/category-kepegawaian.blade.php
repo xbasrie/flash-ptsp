@@ -197,7 +197,7 @@
                         <span class="bg-emerald-100 text-emerald-800 text-xs font-semibold px-2.5 py-0.5 rounded-full group-hover:bg-emerald-200">Online</span>
                     </div>
                     <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-emerald-700 transition">SKPP & SKMI</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Usul Surat Keterangan Penghentian Pembayaran & Masih Ilmiah.</p>
+                    <p class="text-gray-500 text-sm leading-relaxed">Usul Surat Keputusan Penyesuaian Pendidikan & Surat Keterangan Memiliki Ijazah.</p>
                 </div>
                  <div class="bg-gray-50 px-6 py-4 flex justify-between items-center group-hover:bg-emerald-50 transition">
                     <span class="text-xs font-semibold text-gray-400 group-hover:text-emerald-600 uppercase tracking-wider">Mulai Pengajuan</span>

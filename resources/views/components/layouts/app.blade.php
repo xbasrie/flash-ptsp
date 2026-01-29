@@ -6,7 +6,58 @@
         <title>{{ $title ?? 'PTSP Kemenag' }}</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <script>
+            document.addEventListener('livewire:initialized', () => {
+                Livewire.on('show-success-modal', (event) => {
+                    let message = event.message;
+                    let trackingCode = null;
+                    
+                    // Extract Tracking Code if present (Format: SERVICE-DATE-RANDOM)
+                    const match = message.match(/Kode Tracking Anda:\s*([A-Za-z0-9-]+)/);
+                    
+                    if (match && match[1]) {
+                        trackingCode = match[1];
+                        // Replace plain code with clickable HTML
+                        message = message.replace(
+                            trackingCode, 
+                            `<br><b id="clickable-tracking-code" class="inline-block mt-2 px-3 py-1 bg-green-50 text-green-700 rounded-lg border border-green-200 cursor-pointer hover:bg-green-100 transition" title="Klik untuk menyalin" style="font-size: 1.25em;">${trackingCode}</b><br><span class="text-xs text-gray-400 mt-1 inline-block">(Klik kode di atas untuk menyalin)</span>`
+                        );
+                    }
+
+                    Swal.fire({
+                        title: 'Berhasil!',
+                        html: message,
+                        icon: 'success',
+                        confirmButtonText: 'OK',
+                        confirmButtonColor: '#007D43',
+                        didOpen: () => {
+                            if (trackingCode) {
+                                const codeElement = document.getElementById('clickable-tracking-code');
+                                if (codeElement) {
+                                    codeElement.addEventListener('click', () => {
+                                        navigator.clipboard.writeText(trackingCode).then(() => {
+                                            const Toast = Swal.mixin({
+                                                toast: true,
+                                                position: 'top-end',
+                                                showConfirmButton: false,
+                                                timer: 2000,
+                                                timerProgressBar: true
+                                            });
+                                            Toast.fire({
+                                                icon: 'success',
+                                                title: 'Kode berhasil disalin!'
+                                            });
+                                        });
+                                    });
+                                }
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
         <style>
             body { font-family: 'Plus Jakarta Sans', sans-serif; }
             .bg-kemenag { background-color: #007D43; } /* Kemenag Green */

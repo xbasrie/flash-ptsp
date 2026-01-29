@@ -157,7 +157,7 @@ class JenjangJfForm extends Component
         $this->tracking_code = $code;
         $this->reset(['nama', 'nip', 'no_hp', 'unit_kerja', 'jabatan_saat_ini', 'golongan']);
 
-        session()->flash('message', 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
+        $this->dispatch('show-success-modal', message: 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
     }
 
     public function render()

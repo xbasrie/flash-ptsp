@@ -115,7 +115,7 @@ class TugasBelajarForm extends Component
             'surat_diterima', 'sertifikat_akreditasi', 'jadwal_kuliah', 'surat_keterangan_beasiswa'
         ]);
 
-        session()->flash('message', 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
+        $this->dispatch('show-success-modal', message: 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
     }
 
     public function render()

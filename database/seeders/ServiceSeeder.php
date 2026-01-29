@@ -71,7 +71,7 @@ class ServiceSeeder extends Seeder
             ['slug' => 'skpp-skmi'],
             [
                 'name' => 'Usul SKPP dan SKMI',
-                'description' => 'Layanan usul Surat Keterangan Penghentian Pembayaran & Surat Keterangan Masih Ilmiah.',
+                'description' => 'Layanan usul Surat Keputusan Penyesuaian Pendidikan & Surat Keterangan Memiliki Ijazah.',
                 'is_active' => true,
             ]
         );

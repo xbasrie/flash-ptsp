@@ -112,7 +112,7 @@ class PensiunForm extends Component
             $rules['buku_rekening'] = 'required|file|mimes:pdf|max:2048';
             $rules['npwp'] = 'required|file|mimes:pdf|max:2048';
             $rules['ktp_suami_istri'] = 'required|file|mimes:pdf|max:2048';
-            $rules['pas_foto'] = 'required|file|mimes:jpg,jpeg,png|max:2048';
+            $rules['pas_foto'] = 'required|image|max:2048';
             $rules['sk_jabatan_mutasi'] = 'required|file|mimes:pdf|max:2048';
         }
 
@@ -126,7 +126,7 @@ class PensiunForm extends Component
              $rules['buku_rekening'] = 'required|file|mimes:pdf|max:2048';
             $rules['npwp'] = 'required|file|mimes:pdf|max:2048';
             $rules['ktp_suami_istri'] = 'required|file|mimes:pdf|max:2048';
-            $rules['pas_foto'] = 'required|file|mimes:jpg,jpeg,png|max:2048';
+            $rules['pas_foto'] = 'required|image|max:2048';
             $rules['sk_jabatan_mutasi'] = 'required|file|mimes:pdf|max:2048';
         }
 
@@ -201,7 +201,7 @@ class PensiunForm extends Component
         $this->tracking_code = $code;
         $this->reset(['nama', 'nip', 'no_hp', 'unit_kerja', 'jabatan', 'golongan', 'tmt_pensiun', 'sk_cpns', 'sk_pns']); // Partial reset
 
-        session()->flash('message', 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
+        $this->dispatch('show-success-modal', message: 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
     }
 
     public function render()

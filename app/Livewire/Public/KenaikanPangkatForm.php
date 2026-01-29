@@ -165,7 +165,7 @@ class KenaikanPangkatForm extends Component
         $this->reset(['nama', 'nip', 'no_hp', 'unit_kerja', 'jabatan', 'golongan', 'sk_cpns', 'sk_pns', 'skp_1', 'skp_2', 'sk_kp_terakhir', 'ijazah', 'transkrip', 'sk_jabatan_terakhir', 'sk_jabatan_atasan', 'pak']); 
         // Resetting all is cleaner but listing explicit fields is safer. For brevity resetting core ones.
 
-        session()->flash('message', 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
+        $this->dispatch('show-success-modal', message: 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
     }
 
     public function render()

@@ -9,7 +9,7 @@
             Kembali ke Layanan Kepegawaian
         </a>
         <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Layanan Usul SKPP & SKMI</h1>
-        <p class="mt-2 text-lg text-gray-500">Surat Keterangan Penghentian Pembayaran & Surat Keterangan Masih Ilmiah.</p>
+        <p class="mt-2 text-lg text-gray-500">Surat Keputusan Penyesuaian Pendidikan & Surat Keterangan Memiliki Ijazah.</p>
     </div>
 
     <!-- Success Message -->

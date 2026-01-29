@@ -86,6 +86,6 @@ class CutiForm extends Component
         $this->tracking_code = $code;
         $this->reset(['nama', 'nip', 'no_hp', 'unit_kerja', 'jabatan', 'pangkat_golongan', 'jenis_cuti', 'alasan_cuti', 'lama_hari', 'mulai_tanggal', 'sampai_tanggal', 'lampiran']);
         
-        session()->flash('message', 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
+        $this->dispatch('show-success-modal', message: 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
     }
 }
