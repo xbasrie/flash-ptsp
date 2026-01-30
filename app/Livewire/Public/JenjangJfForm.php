@@ -14,6 +14,7 @@ class JenjangJfForm extends Component
     use WithFileUploads;
 
     public $nama;
+    public $email;
     public $nip;
     public $no_hp;
     public $unit_kerja;
@@ -58,6 +59,7 @@ class JenjangJfForm extends Component
             'jenis_layanan' => 'required|in:kenaikan_jenjang,pengangkatan_pertama',
             'jabatan_tujuan' => 'required|in:guru,pengawas,penghulu,penyuluh,lainnya',
             'nama' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
             'nip' => 'required|string|max:20',
             'no_hp' => 'required|string|max:20',
             'unit_kerja' => 'required|string|max:255',
@@ -137,6 +139,7 @@ class JenjangJfForm extends Component
             'status' => 'pending',
             'content' => [
                 'nama' => $this->nama,
+                'email' => $this->email,
                 'nip' => $this->nip,
                 'no_hp' => $this->no_hp,
                 'unit_kerja' => $this->unit_kerja,
@@ -154,8 +157,8 @@ class JenjangJfForm extends Component
             'note' => 'Permohonan Jenjang JF (' . ucwords(str_replace('_', ' ', $this->jenis_layanan)) . ' - ' . ucfirst($this->jabatan_tujuan) . ') baru diajukan.',
         ]);
 
+        $this->reset();
         $this->tracking_code = $code;
-        $this->reset(['nama', 'nip', 'no_hp', 'unit_kerja', 'jabatan_saat_ini', 'golongan']);
 
         $this->dispatch('show-success-modal', message: 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
     }

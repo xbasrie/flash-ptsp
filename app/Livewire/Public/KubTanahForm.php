@@ -14,6 +14,7 @@ class KubTanahForm extends Component
     use WithFileUploads;
 
     public $nama;
+    public $email;
     public $no_hp;
 
     // Uploads
@@ -28,6 +29,7 @@ class KubTanahForm extends Component
 
     protected $rules = [
         'nama' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
         'no_hp' => 'required|string|max:15',
         
         'surat_pernyataan_tidak_sengketa' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
@@ -62,6 +64,7 @@ class KubTanahForm extends Component
             'status' => 'pending',
             'content' => [
                 'nama' => $this->nama,
+                'email' => $this->email,
                 'no_hp' => $this->no_hp,
                 'files' => $files,
             ],
@@ -73,9 +76,8 @@ class KubTanahForm extends Component
             'note' => 'Permohonan Rekomendasi Hak Atas Tanah baru diajukan.',
         ]);
 
+        $this->reset();
         $this->tracking_code = $code;
-        $this->reset(['nama', 'no_hp', 'surat_pernyataan_tidak_sengketa', 'surat_keterangan_domisili_badan', 
-            'npwp_badan', 'ktp_pemohon', 'surat_pernyataan_keabsahan', 'surat_keterangan_keberadaan_badan']);
 
         $this->dispatch('show-success-modal', message: 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
     }

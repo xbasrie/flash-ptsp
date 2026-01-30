@@ -14,6 +14,7 @@ class SatyaLencanaForm extends Component
     use WithFileUploads;
 
     public $nama;
+    public $email;
     public $nip;
     public $no_hp;
     public $unit_kerja;
@@ -33,6 +34,7 @@ class SatyaLencanaForm extends Component
 
     protected $rules = [
         'nama' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
         'nip' => 'required|string|max:20',
         'no_hp' => 'required|string|max:15',
         'unit_kerja' => 'required|string|max:255',
@@ -75,6 +77,7 @@ class SatyaLencanaForm extends Component
             'status' => 'pending',
             'content' => [
                 'nama' => $this->nama,
+                'email' => $this->email,
                 'nip' => $this->nip,
                 'no_hp' => $this->no_hp,
                 'unit_kerja' => $this->unit_kerja,
@@ -91,11 +94,8 @@ class SatyaLencanaForm extends Component
             'note' => 'Permohonan Satya Lencana baru diajukan.',
         ]);
 
+        $this->reset();
         $this->tracking_code = $code;
-        $this->reset([
-            'nama', 'nip', 'no_hp', 'unit_kerja', 'jabatan', 'golongan', 'jenis_satya_lencana',
-            'sk_cpns', 'sk_kp_terakhir', 'sk_jabatan_terakhir', 'drh', 'skp_2_tahun', 'piagam_terakhir'
-        ]);
 
         $this->dispatch('show-success-modal', message: 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
     }

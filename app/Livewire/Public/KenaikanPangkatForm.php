@@ -17,6 +17,7 @@ class KenaikanPangkatForm extends Component
 
     // Identity
     public $nama;
+    public $email;
     public $nip;
     public $no_hp;
     public $unit_kerja;
@@ -63,6 +64,7 @@ class KenaikanPangkatForm extends Component
         $rules = [
             'jenis_kenaikan_pangkat' => 'required|in:fungsional,reguler,struktural,penyesuaian_ijazah',
             'nama' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
             'nip' => 'required|string|max:20',
             'no_hp' => 'required|string|max:15',
             'unit_kerja' => 'required|string|max:255',
@@ -146,6 +148,7 @@ class KenaikanPangkatForm extends Component
             'content' => [
                 'jenis_kenaikan_pangkat' => $this->jenis_kenaikan_pangkat,
                 'nama' => $this->nama,
+                'email' => $this->email,
                 'nip' => $this->nip,
                 'no_hp' => $this->no_hp,
                 'unit_kerja' => $this->unit_kerja,
@@ -161,9 +164,8 @@ class KenaikanPangkatForm extends Component
             'note' => 'Permohonan Kenaikan Pangkat (' . ucfirst(str_replace('_', ' ', $this->jenis_kenaikan_pangkat)) . ') baru diajukan.',
         ]);
 
+        $this->reset();
         $this->tracking_code = $code;
-        $this->reset(['nama', 'nip', 'no_hp', 'unit_kerja', 'jabatan', 'golongan', 'sk_cpns', 'sk_pns', 'skp_1', 'skp_2', 'sk_kp_terakhir', 'ijazah', 'transkrip', 'sk_jabatan_terakhir', 'sk_jabatan_atasan', 'pak']); 
-        // Resetting all is cleaner but listing explicit fields is safer. For brevity resetting core ones.
 
         $this->dispatch('show-success-modal', message: 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
     }

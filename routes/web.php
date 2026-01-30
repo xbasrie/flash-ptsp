@@ -30,4 +30,13 @@ Route::get('/layanan/kub/pendirian', App\Livewire\Public\KubPendirianForm::class
 Route::get('/layanan/kub/rohaniawan', App\Livewire\Public\KubRohaniawanForm::class)->name('layanan.kub-rohaniawan');
 Route::get('/layanan/kub/tanah', App\Livewire\Public\KubTanahForm::class)->name('layanan.kub-tanah');
 
+// Bimas Islam
+Route::get('/layanan/bimas-islam', function () {
+    return view('public.category-bimas-islam');
+})->name('layanan.bimas-islam');
+
+Route::get('/layanan/bimas-masjid', App\Livewire\Public\BimasIslamMasjidForm::class)->name('layanan.bimas-masjid');
+Route::get('/layanan/bimas-musholla', App\Livewire\Public\BimasIslamMushollaForm::class)->name('layanan.bimas-musholla');
+Route::get('/layanan/bimas-majelis-taklim', App\Livewire\Public\BimasIslamMajelisTaklimForm::class)->name('layanan.bimas-majelis-taklim');
+
 Route::get('/tracking', App\Livewire\Public\TrackingService::class)->name('tracking');

@@ -88,6 +88,11 @@
                         @error('nama') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
                     </div>
                     <div class="col-span-1">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" wire:model="email" class="w-full rounded-lg border-gray-300 focus:border-cyan-500 focus:ring-cyan-500 transition shadow-sm" placeholder="Email aktif">
+                        @error('email') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="col-span-1">
                         <label class="block text-sm font-medium text-gray-700 mb-1">NIP</label>
                         <input type="text" wire:model="nip" class="w-full rounded-lg border-gray-300 focus:border-cyan-500 focus:ring-cyan-500 transition shadow-sm">
                         @error('nip') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror

@@ -14,6 +14,7 @@ class KubPendirianForm extends Component
     use WithFileUploads;
 
     public $nama;
+    public $email;
     public $no_hp;
 
     // Uploads
@@ -33,6 +34,7 @@ class KubPendirianForm extends Component
 
     protected $rules = [
         'nama' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
         'no_hp' => 'required|string|max:15',
         
         'surat_permohonan' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
@@ -77,6 +79,7 @@ class KubPendirianForm extends Component
             'status' => 'pending',
             'content' => [
                 'nama' => $this->nama,
+                'email' => $this->email,
                 'no_hp' => $this->no_hp,
                 'files' => $files,
             ],
@@ -88,10 +91,8 @@ class KubPendirianForm extends Component
             'note' => 'Permohonan Izin Pendirian Rumah Ibadah baru diajukan.',
         ]);
 
+        $this->reset();
         $this->tracking_code = $code;
-        $this->reset(['nama', 'no_hp', 'surat_permohonan', 'proposal_pendirian', 'bukti_kepemilikan_tanah', 'akte_notaris_pendirian', 
-            'rekomendasi_fkub', 'susunan_pengurus', 'surat_pernyataan_konflik', 'surat_keterangan_domisili', 
-            'ktp_pengguna', 'dukungan_masyarakat', 'foto_fisik_papan_nama']);
 
         $this->dispatch('show-success-modal', message: 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
     }

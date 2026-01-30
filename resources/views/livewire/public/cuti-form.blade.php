@@ -92,6 +92,12 @@
                         </div>
 
                         <div class="group">
+                            <label class="block text-sm font-medium text-gray-700 mb-1 group-hover:text-green-600 transition">Email</label>
+                            <input type="email" wire:model="email" class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 transition duration-150 ease-in-out sm:text-sm p-3" placeholder="Email aktif">
+                            @error('email') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                        </div>
+
+                        <div class="group">
                             <label class="block text-sm font-medium text-gray-700 mb-1 group-hover:text-green-600 transition">NIP</label>
                             <input type="text" wire:model="nip" class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 transition duration-150 ease-in-out sm:text-sm p-3" placeholder="18 digit NIP">
                             @error('nip') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror

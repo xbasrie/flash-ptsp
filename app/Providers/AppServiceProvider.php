@@ -22,5 +22,7 @@ class AppServiceProvider extends ServiceProvider
         \Illuminate\Support\Facades\Gate::policy(\App\Models\User::class, \App\Policies\UserPolicy::class);
         \Illuminate\Support\Facades\Gate::policy(\Spatie\Permission\Models\Role::class, \App\Policies\RolePolicy::class);
         \Illuminate\Support\Facades\Gate::policy(\App\Models\Submission::class, \App\Policies\SubmissionPolicy::class);
+        
+        \App\Models\Submission::observe(\App\Observers\SubmissionObserver::class);
     }
 }

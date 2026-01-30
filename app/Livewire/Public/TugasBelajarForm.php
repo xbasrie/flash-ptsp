@@ -16,6 +16,7 @@ class TugasBelajarForm extends Component
     public $jenis_tugas_belajar = 'mandiri'; // mandiri, beasiswa
 
     public $nama;
+    public $email;
     public $nip;
     public $no_hp;
     public $unit_kerja;
@@ -41,6 +42,7 @@ class TugasBelajarForm extends Component
         $rules = [
             'jenis_tugas_belajar' => 'required|in:mandiri,beasiswa',
             'nama' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
             'nip' => 'required|string|max:20',
             'no_hp' => 'required|string|max:15',
             'unit_kerja' => 'required|string|max:255',
@@ -93,6 +95,7 @@ class TugasBelajarForm extends Component
             'content' => [
                 'jenis_tugas_belajar' => $this->jenis_tugas_belajar,
                 'nama' => $this->nama,
+                'email' => $this->email,
                 'nip' => $this->nip,
                 'no_hp' => $this->no_hp,
                 'unit_kerja' => $this->unit_kerja,
@@ -108,12 +111,8 @@ class TugasBelajarForm extends Component
             'note' => 'Permohonan Tugas Belajar (' . ucfirst($this->jenis_tugas_belajar) . ') baru diajukan.',
         ]);
 
+        $this->reset();
         $this->tracking_code = $code;
-        $this->reset([
-            'nama', 'nip', 'no_hp', 'unit_kerja', 'jabatan', 'golongan', 
-            'surat_pengantar', 'surat_pernyataan', 'surat_perjanjian', 'skp_2_tahun', 
-            'surat_diterima', 'sertifikat_akreditasi', 'jadwal_kuliah', 'surat_keterangan_beasiswa'
-        ]);
 
         $this->dispatch('show-success-modal', message: 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
     }

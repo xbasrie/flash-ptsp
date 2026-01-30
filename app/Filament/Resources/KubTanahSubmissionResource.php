@@ -90,11 +90,12 @@ class KubTanahSubmissionResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table
+        return $table->defaultSort('created_at', 'desc')
             ->columns([
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Tanggal')
                     ->dateTime('d M Y H:i')
+                    ->timezone('Asia/Jakarta')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('tracking_code')
                     ->label('Kode Tracking')
@@ -107,33 +108,34 @@ class KubTanahSubmissionResource extends Resource
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
                         'pending' => 'warning',
-                        'proses' => 'info',
-                        'selesai' => 'success',
-                        'ditolak' => 'danger',
+                        'process', 'proses' => 'info',
+                        'approved', 'selesai' => 'success',
+                        'rejected', 'ditolak' => 'danger',
+                        default => 'gray',
                     }),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('status')
                     ->options([
-                        'pending' => 'Pending',
-                        'proses' => 'Diproses',
-                        'selesai' => 'Selesai',
-                        'ditolak' => 'Ditolak',
+                        'pending' => 'Menunggu',
+                        'process' => 'Proses',
+                        'approved' => 'Selesai',
+                        'rejected' => 'Ditolak',
                     ]),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Action::make('updateStatus')
-                    ->label('Update Status')
+                    ->label('Ubah Status')
                     ->icon('heroicon-o-pencil-square')
                     ->color('warning')
                     ->form([
                         Forms\Components\Select::make('status')
                             ->options([
-                                'pending' => 'Pending',
-                                'proses' => 'Diproses',
-                                'selesai' => 'Selesai',
-                                'ditolak' => 'Ditolak',
+                                'pending' => 'Menunggu',
+                                'process' => 'Proses',
+                                'approved' => 'Selesai',
+                                'rejected' => 'Ditolak',
                             ])
                             ->required(),
                         Forms\Components\Textarea::make('note')
@@ -141,13 +143,27 @@ class KubTanahSubmissionResource extends Resource
                             ->rows(3),
                     ])
                     ->action(function (Submission $record, array $data) {
-                        $record->update(['status' => $data['status']]);
+                        $record->update([
+                            'status' => $data['status'],
+                            'admin_note' => $data['admin_note'] ?? null,
+                        ]);
                         
                         TrackingLog::create([
                             'submission_id' => $record->id,
                             'status' => $data['status'],
-                            'note' => $data['note'] ?? 'Status updated by admin',
+                            'note' => $data['note'] ?? 'Status diperbarui oleh admin',
                         ]);
+
+                        ActivityLogger::log(
+                            'updated',
+                            'Memperbarui status permohonan ke ' . $data['status'] . ': ' . $record->tracking_code,
+                            $record
+                        );
+
+                        \Filament\Notifications\Notification::make()
+                            ->title('Status berhasil diperbarui')
+                            ->success()
+                            ->send();
                     }),
             ])
             ->defaultSort('created_at', 'desc');
@@ -175,6 +191,11 @@ class KubTanahSubmissionResource extends Resource
     public static function getNavigationBadgeColor(): ?string
     {
         return 'warning';
+    }
+
+    public static function canAccess(): bool
+    {
+        return auth()->user()->hasRole(['super admin', 'admin kub']);
     }
 
     public static function canCreate(): bool

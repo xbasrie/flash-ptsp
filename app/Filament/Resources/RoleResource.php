@@ -16,6 +16,7 @@ class RoleResource extends Resource
 
     protected static ?string $navigationGroup = 'User Management';
     protected static ?string $navigationIcon = 'heroicon-o-shield-check';
+    protected static ?int $navigationSort = 99;
 
     public static function form(Form $form): Form
     {
@@ -30,11 +31,11 @@ class RoleResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table
+        return $table->defaultSort('created_at', 'desc')
             ->columns([
                 Tables\Columns\TextColumn::make('name')->searchable(),
                 Tables\Columns\TextColumn::make('guard_name'),
-                Tables\Columns\TextColumn::make('created_at')->dateTime(),
+                Tables\Columns\TextColumn::make('created_at')->dateTime()->timezone('Asia/Jakarta'),
             ])
             ->filters([
                 //

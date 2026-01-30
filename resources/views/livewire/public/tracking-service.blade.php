@@ -40,8 +40,16 @@
                 <div class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide
                     {{ $submission->status == 'approved' ? 'bg-green-100 text-green-800' : 
                        ($submission->status == 'rejected' ? 'bg-red-100 text-red-800' : 
-                       ($submission->status == 'proses' ? 'bg-blue-100 text-blue-800' : 'bg-yellow-100 text-yellow-800')) }}">
-                    {{ $submission->status }}
+                       ($submission->status == 'process' ? 'bg-blue-100 text-blue-800' : 'bg-yellow-100 text-yellow-800')) }}">
+                    {{ 
+                        match($submission->status) {
+                            'pending' => 'Menunggu',
+                            'process' => 'Proses',
+                            'approved' => 'Selesai',
+                            'rejected' => 'Ditolak',
+                            default => $submission->status
+                        }
+                    }}
                 </div>
             </div>
             
@@ -56,7 +64,17 @@
                             
                             <div>
                                 <span class="text-xs text-gray-500 font-mono">{{ $log->created_at->format('d M Y, H:i') }}</span>
-                                <h4 class="text-base font-bold text-gray-800 capitalize">{{ $log->status }}</h4>
+                                <h4 class="text-base font-bold text-gray-800 capitalize">
+                                    {{ 
+                                        match($log->status) {
+                                            'pending' => 'Menunggu',
+                                            'process' => 'Proses',
+                                            'approved' => 'Selesai',
+                                            'rejected' => 'Ditolak',
+                                            default => $log->status
+                                        }
+                                    }}
+                                </h4>
                                 @if ($log->note)
                                     <p class="text-gray-600 mt-1 bg-gray-50 p-2 rounded text-sm italic">"{{ $log->note }}"</p>
                                 @endif

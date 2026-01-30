@@ -123,5 +123,41 @@ class ServiceSeeder extends Seeder
         );
         
         // Add other placeholders if needed
+        // Layanan Bimas Islam
+        Service::firstOrCreate(
+            ['slug' => 'bimas-nikah'],
+            [
+                'name' => 'Layanan Nikah',
+                'description' => 'Pendaftaran Nikah Online via SIMKAH Gen 4.',
+                'is_active' => true,
+            ]
+        );
+
+        Service::firstOrCreate(
+            ['slug' => 'bimas-masjid'],
+            [
+                'name' => 'ID Masjid dan Musholla',
+                'description' => 'Layanan Permohonan Surat Keterangan Terdaftar / ID Masjid dan Musholla.',
+                'is_active' => true,
+            ]
+        );
+
+        Service::firstOrCreate(
+            ['slug' => 'bimas-musholla'],
+            [
+                'name' => 'Perubahan Musholla ke Masjid',
+                'description' => 'Layanan Permohonan Perubahan Status Musholla menjadi Masjid.',
+                'is_active' => true,
+            ]
+        );
+
+        Service::firstOrCreate(
+            ['slug' => 'bimas-majelis-taklim'],
+            [
+                'name' => 'Majelis Taklim',
+                'description' => 'Layanan Surat Keterangan Terdaftar Majelis Taklim.',
+                'is_active' => true,
+            ]
+        );
     }
 }

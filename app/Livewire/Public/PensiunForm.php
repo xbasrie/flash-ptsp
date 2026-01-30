@@ -17,6 +17,7 @@ class PensiunForm extends Component
 
     // Identity
     public $nama;
+    public $email;
     public $nip;
     public $no_hp;
     public $unit_kerja;
@@ -72,6 +73,7 @@ class PensiunForm extends Component
         $rules = [
             'jenis_pensiun' => 'required|in:bup,janda_duda,uzur,aps',
             'nama' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
             'nip' => 'required|string|max:20',
             'no_hp' => 'required|string|max:15',
             'unit_kerja' => 'required|string|max:255',
@@ -182,6 +184,7 @@ class PensiunForm extends Component
             'content' => [
                 'jenis_pensiun' => $this->jenis_pensiun,
                 'nama' => $this->nama,
+                'email' => $this->email,
                 'nip' => $this->nip,
                 'no_hp' => $this->no_hp,
                 'unit_kerja' => $this->unit_kerja,
@@ -198,8 +201,8 @@ class PensiunForm extends Component
             'note' => 'Permohonan Pensiun (' . strtoupper($this->jenis_pensiun) . ') baru diajukan.',
         ]);
 
+        $this->reset();
         $this->tracking_code = $code;
-        $this->reset(['nama', 'nip', 'no_hp', 'unit_kerja', 'jabatan', 'golongan', 'tmt_pensiun', 'sk_cpns', 'sk_pns']); // Partial reset
 
         $this->dispatch('show-success-modal', message: 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
     }

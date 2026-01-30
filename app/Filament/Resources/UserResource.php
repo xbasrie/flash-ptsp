@@ -18,6 +18,7 @@ class UserResource extends Resource
 
     protected static ?string $navigationGroup = 'User Management';
     protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static ?int $navigationSort = 99;
 
     public static function form(Form $form): Form
     {
@@ -45,22 +46,39 @@ class UserResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table
+        return $table->defaultSort('created_at', 'desc')
             ->columns([
                 Tables\Columns\TextColumn::make('name')->searchable(),
                 Tables\Columns\TextColumn::make('email')->searchable(),
                 Tables\Columns\TextColumn::make('roles.name')->badge(),
-                Tables\Columns\TextColumn::make('created_at')->dateTime()->sortable(),
+                Tables\Columns\TextColumn::make('created_at')->dateTime()->timezone('Asia/Jakarta')->sortable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->after(function ($record) {
+                         \App\Services\ActivityLogger::log(
+                            'deleted',
+                            'Menghapus user: ' . $record->name,
+                            $record
+                        );
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->after(function (\Illuminate\Database\Eloquent\Collection $records) {
+                            foreach ($records as $record) {
+                                \App\Services\ActivityLogger::log(
+                                    'deleted',
+                                    'Menghapus user (bulk): ' . $record->name,
+                                    $record
+                                );
+                            }
+                        }),
                 ]),
             ]);
     }

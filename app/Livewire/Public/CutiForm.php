@@ -11,6 +11,7 @@ class CutiForm extends Component
     use WithFileUploads;
 
     public $nama;
+    public $email;
     public $nip;
     public $no_hp;
     public $unit_kerja;
@@ -27,6 +28,7 @@ class CutiForm extends Component
 
     protected $rules = [
         'nama' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
         'nip' => 'required|string|max:20',
         'no_hp' => 'required|string|max:15',
         'unit_kerja' => 'required|string|max:255',
@@ -63,6 +65,7 @@ class CutiForm extends Component
             'status' => 'pending',
             'content' => [
                 'nama' => $this->nama,
+                'email' => $this->email,
                 'nip' => $this->nip,
                 'no_hp' => $this->no_hp,
                 'unit_kerja' => $this->unit_kerja,
@@ -83,8 +86,8 @@ class CutiForm extends Component
             'note' => 'Permohonan baru diajukan oleh pemohon.',
         ]);
 
+        $this->reset();
         $this->tracking_code = $code;
-        $this->reset(['nama', 'nip', 'no_hp', 'unit_kerja', 'jabatan', 'pangkat_golongan', 'jenis_cuti', 'alasan_cuti', 'lama_hari', 'mulai_tanggal', 'sampai_tanggal', 'lampiran']);
         
         $this->dispatch('show-success-modal', message: 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
     }

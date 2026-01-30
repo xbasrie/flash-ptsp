@@ -14,6 +14,7 @@ class KubRohaniawanForm extends Component
     use WithFileUploads;
 
     public $nama;
+    public $email;
     public $no_hp;
 
     // Uploads
@@ -26,6 +27,7 @@ class KubRohaniawanForm extends Component
 
     protected $rules = [
         'nama' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
         'no_hp' => 'required|string|max:15',
         
         'paspor' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
@@ -56,6 +58,7 @@ class KubRohaniawanForm extends Component
             'status' => 'pending',
             'content' => [
                 'nama' => $this->nama,
+                'email' => $this->email,
                 'no_hp' => $this->no_hp,
                 'files' => $files,
             ],
@@ -67,8 +70,8 @@ class KubRohaniawanForm extends Component
             'note' => 'Permohonan Rekomendasi Rohaniawan Asing baru diajukan.',
         ]);
 
+        $this->reset();
         $this->tracking_code = $code;
-        $this->reset(['nama', 'no_hp', 'paspor', 'visa', 'surat_penjamin', 'proposal_lembaga']);
 
         $this->dispatch('show-success-modal', message: 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
     }

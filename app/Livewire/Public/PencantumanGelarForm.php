@@ -14,6 +14,7 @@ class PencantumanGelarForm extends Component
     use WithFileUploads;
 
     public $nama;
+    public $email;
     public $nip;
     public $no_hp;
     public $unit_kerja;
@@ -38,6 +39,7 @@ class PencantumanGelarForm extends Component
 
     protected $rules = [
         'nama' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
         'nip' => 'required|string|max:20',
         'no_hp' => 'required|string|max:20',
         'unit_kerja' => 'required|string|max:255',
@@ -86,6 +88,7 @@ class PencantumanGelarForm extends Component
             'status' => 'pending',
             'content' => [
                 'nama' => $this->nama,
+                'email' => $this->email,
                 'nip' => $this->nip,
                 'no_hp' => $this->no_hp,
                 'unit_kerja' => $this->unit_kerja,
@@ -101,12 +104,8 @@ class PencantumanGelarForm extends Component
             'note' => 'Permohonan Pencantuman Gelar baru diajukan.',
         ]);
 
+        $this->reset();
         $this->tracking_code = $code;
-        $this->reset(['nama', 'nip', 'no_hp', 'unit_kerja', 'jabatan', 'golongan', 
-            'surat_usul_kakankemenag', 'sptjm_bermaterai', 'sptjm_kakankemenag',
-            'ijazah', 'transkrip_nilai', 'dokumen_tubel_ib',
-            'akreditasi_jurusan', 'sk_kp_terakhir', 'sk_cpns',
-            'sk_pns', 'sk_jabatan_fungsional', 'screenshot_pddikti']);
 
         $this->dispatch('show-success-modal', message: 'Permohonan berhasil dikirim! Kode Tracking Anda: ' . $code);
     }

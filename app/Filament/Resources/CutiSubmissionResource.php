@@ -57,9 +57,10 @@ class CutiSubmissionResource extends Resource
                     ->schema([
                         Forms\Components\Select::make('status')
                             ->options([
-                                'pending' => 'Pending',
-                                'approved' => 'Approved',
-                                'rejected' => 'Rejected',
+                                'pending' => 'Menunggu',
+                                'process' => 'Proses',
+                                'approved' => 'Selesai',
+                                'rejected' => 'Ditolak',
                             ])->required(),
                         Forms\Components\Textarea::make('admin_note')->label('Catatan Admin'),
                     ])
@@ -68,17 +69,17 @@ class CutiSubmissionResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table
+        return $table->defaultSort('created_at', 'desc')
             ->columns([
                 Tables\Columns\TextColumn::make('tracking_code')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('content.nama')->label('Nama')->searchable(),
                 Tables\Columns\TextColumn::make('content.jenis_cuti')->label('Jenis Cuti'),
-                 Tables\Columns\TextColumn::make('created_at')->dateTime()->label('Tanggal Masuk')->sortable(),
+                 Tables\Columns\TextColumn::make('created_at')->dateTime()->timezone('Asia/Jakarta')->label('Tanggal Masuk')->sortable(),
                 Tables\Columns\TextColumn::make('status')
                     ->badge()
                     ->colors([
                         'warning' => 'pending',
-                        'info' => 'proses',
+                        'info' => 'process',
                         'success' => 'approved',
                         'danger' => 'rejected',
                     ]),
@@ -86,25 +87,25 @@ class CutiSubmissionResource extends Resource
             ->filters([
                 Tables\Filters\SelectFilter::make('status')
                     ->options([
-                        'pending' => 'Pending',
-                        'proses' => 'Proses',
-                        'approved' => 'Approved',
-                        'rejected' => 'Rejected',
+                        'pending' => 'Menunggu',
+                        'process' => 'Proses',
+                        'approved' => 'Selesai',
+                        'rejected' => 'Ditolak',
                     ]),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\Action::make('updateStatus')
-                    ->label('Update Status')
+                    ->label('Ubah Status')
                     ->icon('heroicon-o-pencil-square')
                     ->color('warning')
                     ->form([
                         Forms\Components\Select::make('status')
                             ->options([
-                                'pending' => 'Pending',
-                                'proses' => 'Proses',
-                                'approved' => 'Approved',
-                                'rejected' => 'Rejected',
+                                'pending' => 'Menunggu',
+                                'process' => 'Proses',
+                                'approved' => 'Selesai',
+                                'rejected' => 'Ditolak',
                             ])
                             ->required(),
                         Forms\Components\Textarea::make('admin_note')
@@ -123,8 +124,14 @@ class CutiSubmissionResource extends Resource
                             'note' => $data['admin_note'],
                         ]);
 
+                        \App\Services\ActivityLogger::log(
+                            'updated',
+                            'Memperbarui status permohonan ke ' . $data['status'] . ': ' . $record->tracking_code,
+                            $record
+                        );
+
                         \Filament\Notifications\Notification::make()
-                            ->title('Status updated successfully')
+                            ->title('Status berhasil diperbarui')
                             ->success()
                             ->send();
                     }),
@@ -134,6 +141,11 @@ class CutiSubmissionResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+    }
+
+    public static function canAccess(): bool
+    {
+        return auth()->user()->hasRole(['super admin', 'admin kepegawaian']);
     }
 
     public static function getRelations(): array
