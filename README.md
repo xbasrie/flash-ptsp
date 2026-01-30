@@ -10,6 +10,9 @@ Aplikasi Pelayanan Terpadu Satu Pintu (PTSP) FLASH adalah sistem layanan digital
 - **S**imple (Sederhana)
 - **H**umble (Rendah Hati)
 
+> 📘 **Dokumentasi Lengkap:**
+> Untuk panduan penggunaan aplikasi secara detail (alur kerja, hak akses, dan struktur sistem), silakan baca **[Dokumentasi Aplikasi (DOCUMENTATION.md)](DOCUMENTATION.md)**.
+
 ## Fitur Utama
 
 ### 1. Layanan Publik (Frontend)
@@ -84,10 +87,28 @@ npm install && npm run build
    ```
 4. Generate App Key:
    ```bash
-   php artisan key:generate
+    php artisan key:generate
    ```
 
-### 4. Setup Database & User
+### 4. Konfigurasi Email (SMTP)
+Agar notifikasi status permohonan dapat terkirim ke email pemohon, Anda **WAJIB** mengonfigurasi pengaturan SMTP di file `.env`. 
+
+Gunakan layanan seperti **Gmail** (direkomendasikan menggunakan App Password) atau Mailtrap (untuk testing).
+
+Contoh konfigurasi Gmail:
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=email_anda@gmail.com
+MAIL_PASSWORD=app_password_anda
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="no-reply@kemenag-surabaya.go.id"
+MAIL_FROM_NAME="PTSP Kemenag Surabaya"
+```
+> **Catatan:** Jika menggunakan Gmail, pastikan Anda menggunakan **App Password** (bukan password login biasa). [Lihat panduan membuat App Password Gmail](https://support.google.com/accounts/answer/185833).
+
+### 5. Setup Database & User
 Jalankan perintah berikut secara berurutan untuk menyiapkan tabel dan data awal:
 
 ```bash
