@@ -13,7 +13,10 @@ Aplikasi Pelayanan Terpadu Satu Pintu (PTSP) FLASH adalah sistem layanan digital
 ## Fitur Utama
 
 ### 1. Layanan Publik (Frontend)
-- **Katalog Layanan**: Akses terpusat ke semua layanan (Kepegawaian, Magang, dll).
+- **Katalog Layanan**: Akses terpusat ke semua layanan, dikategorikan untuk kemudahan akses:
+    - **Layanan Kepegawaian**: Cuti, Kenaikan Pangkat, Satya Lencana, dll.
+    - **Layanan Bimas Islam**: ID Masjid/Musholla, Majelis Taklim, Layanan Nikah (Redirect Simkah).
+    - **Layanan KUB**: Izin Pendirian Rumah Ibadah, Rekomendasi Rohaniawan Asing, Rekomendasi Tanah.
 - **Pencarian Instan**: Temukan layanan dengan cepat menggunakan fitur pencarian real-time.
 - **Formulir Cerdas**: Formulir pengajuan yang dinamis (upload berkas, validasi otomatis) berbasis Livewire.
 - **Pelacakan Status**: Pantau progres permohonan kapan saja menggunakan **Kode Tracking**.
@@ -21,10 +24,16 @@ Aplikasi Pelayanan Terpadu Satu Pintu (PTSP) FLASH adalah sistem layanan digital
 
 ### 2. Manajemen Admin (Backend)
 - **Dashboard Modern**: Dibangun dengan FilamentPHP untuk pengelolaan data yang efisien.
-- **Role-Based Access Control (RBAC)**: 
-  - **Super Admin**: Akses penuh ke seluruh sistem dan manajemen user.
-  - **Admin Kepegawaian**: Fokus pada verifikasi layanan kepegawaian.
-- **Verifikasi Berkas**: Kemudahan meninjau dokumen, menyetujui, atau menolak permohonan.
+- **Widget Statistik**: Grafik dan statistik yang disesuaikan dengan role (Global untuk Super Admin, Spesifik untuk Admin Layanan).
+- **Log Aktivitas**: Audit trail lengkap untuk mencatat setiap tindakan user dan perubahan status permohonan.
+- **Role-Based Access Control (RBAC)**:
+  - **Super Admin**: Akses penuh ke seluruh sistem, manajemen user, dan log aktivitas.
+  - **Admin Kepegawaian**: Mengelola layanan Cut, Pangkat, Satya Lencana, dll.
+  - **Admin Bimas Islam**: Mengelola ID Masjid, Musholla, dan Majelis Taklim.
+  - **Admin KUB**: Mengelola permohonan pendirian rumah ibadah dan rekomendasi KUB.
+  - **Admin Zawa**: (Segera Hadir) Mengelola layanan Zakat dan Wakaf.
+- **Verifikasi Berkas**: Kemudahan meninjau dokumen, menyetujui, atau menolak permohonan dengan catatan admin.
+- **Notifikasi Email**: Pemohon otomatis menerima email saat status permohonan berubah.
 - **Manajemen User**: Tambah, edit, dan atur hak akses pengguna.
 
 ## Teknologi
