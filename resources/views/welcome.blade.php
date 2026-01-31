@@ -7,7 +7,7 @@
             </svg>
         </div>
         <div class="relative max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8 flex flex-col items-center text-center z-10">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Kementerian_Agama_new_logo.png" alt="Logo" class="h-24 w-auto mb-6 drop-shadow-lg animate-fade-in-up">
+            <img src="{{ asset('assets/images/logo/kemenag-logo.webp') }}" alt="Logo" class="h-24 w-auto mb-6 drop-shadow-lg animate-fade-in-up">
             <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl mb-2 drop-shadow-md">
                 PTSP FLASH
             </h1>

@@ -17,7 +17,7 @@
             {{-- Logo & Branding --}}
             <div class="card-branding">
                 <div class="logo-container">
-                    <img src="{{ asset('https://upload.wikimedia.org/wikipedia/commons/9/9a/Kementerian_Agama_new_logo.png') }}" alt="Kemenag Logo" class="logo-img">
+                    <img src="{{ asset('assets/images/logo/kemenag-logo.webp') }}" alt="Kemenag Logo" class="logo-img">
                 </div>
                 <h2 class="brand-title">
                     FLASH PTSP <span class="brand-highlight"><br>Kemenag Surabaya</span>

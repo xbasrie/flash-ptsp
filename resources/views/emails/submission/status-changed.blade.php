@@ -34,7 +34,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Kementerian_Agama_new_logo.png" alt="Logo Kemenag" class="logo">
+            <img src="{{ asset('assets/images/logo/kemenag-logo.webp') }}" alt="Logo Kemenag" class="logo">
             <h1 class="title">Status Diperbarui</h1>
         </div>
         <div class="content">
@@ -69,7 +69,7 @@
             @if ($submission->admin_note)
             <div class="note-box" style="border-left-color: {{ $submission->status === 'approved' ? '#10b981' : ($submission->status === 'rejected' ? '#ef4444' : '#3b82f6') }};">
                 <span class="note-label">Catatan Admin:</span>
-                <p class="note-content">"{{ $submission->admin_note }}"</p>
+                <p class="note-content">"{!! preg_replace('/(https?:\/\/[^\s]+)/', '<a href="$1" target="_blank" style="color: #2563eb; text-decoration: underline;">$1</a>', e($submission->admin_note)) !!}"</p>
             </div>
             @endif
 

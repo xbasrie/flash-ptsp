@@ -26,7 +26,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Kementerian_Agama_new_logo.png" alt="Logo Kemenag" class="logo">
+            <img src="{{ asset('assets/images/logo/kemenag-logo.webp') }}" alt="Logo Kemenag" class="logo">
             <h1 class="title">Permohonan Diterima</h1>
         </div>
         <div class="content">

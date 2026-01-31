@@ -76,7 +76,7 @@
                                     }}
                                 </h4>
                                 @if ($log->note)
-                                    <p class="text-gray-600 mt-1 bg-gray-50 p-2 rounded text-sm italic">"{{ $log->note }}"</p>
+                                    <p class="text-gray-600 mt-1 bg-gray-50 p-2 rounded text-sm italic">"{!! preg_replace('/(https?:\/\/[^\s]+)/', '<a href="$1" target="_blank" class="text-blue-600 hover:text-blue-800 underline">$1</a>', e($log->note)) !!}"</p>
                                 @endif
                             </div>
                         </div>

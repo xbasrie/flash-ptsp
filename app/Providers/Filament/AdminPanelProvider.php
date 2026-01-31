@@ -30,9 +30,9 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Emerald,
             ])
-            ->brandLogo('https://upload.wikimedia.org/wikipedia/commons/9/9a/Kementerian_Agama_new_logo.png')
+            ->brandLogo(asset('assets/images/logo/kemenag-logo.webp'))
             ->brandLogoHeight('3rem')
-            ->favicon('https://upload.wikimedia.org/wikipedia/commons/9/9a/Kementerian_Agama_new_logo.png')
+            ->favicon(asset('assets/images/logo/kemenag-logo.webp'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([

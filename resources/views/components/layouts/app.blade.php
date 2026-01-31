@@ -3,8 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ $title ?? 'PTSP Kemenag' }}</title>
-        <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/Kementerian_Agama_new_logo.png">
+        <link rel="icon" href="{{ asset('assets/images/logo/kemenag-logo.webp') }}">
         <script src="https://cdn.tailwindcss.com"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -72,7 +73,7 @@
         <header class="bg-white shadow-md sticky top-0 z-50" x-data="{ mobileMenuOpen: false }">
             <div class="container mx-auto px-4 py-3 flex items-center justify-between">
                 <a href="/" class="flex items-center space-x-3 group">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Kementerian_Agama_new_logo.png" alt="Logo Kemenag" class="h-10 md:h-12 w-auto group-hover:scale-105 transition-transform duration-300">
+                    <img src="{{ asset('assets/images/logo/kemenag-logo.webp') }}" alt="Logo Kemenag" class="h-10 md:h-12 w-auto group-hover:scale-105 transition-transform duration-300">
                     <div class="flex flex-col">
                         <span class="text-xl md:text-2xl font-extrabold text-gray-800 leading-none tracking-tight">PTSP FLASH</span>
                         <span class="text-[8px] md:text-[10px] font-bold text-kemenag tracking-wide mb-0.5">(Fast, Loyal, Afirmatif, Simple, Humble)</span>
@@ -120,7 +121,7 @@
                     <!-- About -->
                     <div class="space-y-6">
                         <div class="flex items-center gap-3">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Kementerian_Agama_new_logo.png" alt="Logo Kemenag" class="h-16 w-auto bg-white rounded-lg p-1">
+                            <img src="{{ asset('assets/images/logo/kemenag-logo.webp') }}" alt="Logo Kemenag" class="h-16 w-auto bg-white rounded-lg p-1">
                             <div class="flex flex-col">
                                 <span class="font-bold text-lg leading-tight">Kementerian Agama</span>
                                 <span class="font-bold text-lg leading-tight">Kota Surabaya</span>
