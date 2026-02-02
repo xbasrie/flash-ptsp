@@ -6,7 +6,7 @@
                  <path d="M0 100 C 20 0 50 0 100 100 Z" fill="white" />
             </svg>
         </div>
-        <div class="relative max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8 flex flex-col items-center text-center z-10">
+        <div class="relative max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8 flex flex-col items-center text-center z-30">
             <img src="{{ asset('assets/images/logo/kemenag-logo.webp') }}" alt="Logo" class="h-24 w-auto mb-6 drop-shadow-lg animate-fade-in-up">
             <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl mb-2 drop-shadow-md">
                 PTSP FLASH
@@ -20,6 +20,10 @@
             <p class="text-xl text-green-100 max-w-2xl mx-auto mb-8 font-light">
                 Pelayanan Terpadu Satu Pintu (PTSP) kini lebih mudah, cepat, dan transparan melalui Layanan Mandiri Digital.
             </p>
+            
+            <!-- Search Component -->
+            <livewire:public.service-search />
+
             <div class="flex space-x-4">
                 <a href="#layanan" class="bg-yellow-500 hover:bg-yellow-400 text-green-900 font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105">
                     Mulai Layanan
@@ -93,7 +97,7 @@
                             </svg>
                         </div>
                         <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-green-700 transition">Kepegawaian</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed">Cuti, Kenaikan Pangkat, Pensiun, dan Mutasi.</p>
+                        <p class="text-sm text-gray-500 leading-relaxed">Cuti, Kenaikan Pangkat, Pensiun, dan Magang.</p>
                     </div>
                 </a>
              </div>

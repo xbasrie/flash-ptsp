@@ -49,4 +49,8 @@ Route::get('/layanan/zawa/tanah', App\Livewire\Public\ZawaTanahForm::class)->nam
 Route::get('/layanan/zawa/nadzir', App\Livewire\Public\ZawaNadzirForm::class)->name('layanan.zawa-nadzir');
 Route::get('/layanan/zawa/tunai', App\Livewire\Public\ZawaTunaiForm::class)->name('layanan.zawa-tunai');
 
+Route::get('/layanan/magang', function() {
+    return redirect()->away('https://magang.kemenagsby.web.id/');
+})->name('layanan.magang');
+
 Route::get('/tracking', App\Livewire\Public\TrackingService::class)->name('tracking');

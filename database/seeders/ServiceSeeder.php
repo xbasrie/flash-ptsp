@@ -195,5 +195,14 @@ class ServiceSeeder extends Seeder
                 'is_active' => true,
             ]
         );
+
+         Service::firstOrCreate(
+            ['slug' => 'magang'],
+            [
+                'name' => 'Layanan Magang',
+                'description' => 'Layanan permohonan Magang, PKL, atau Penelitian.',
+                'is_active' => true,
+            ]
+        );
     }
 }
