@@ -39,4 +39,14 @@ Route::get('/layanan/bimas-masjid', App\Livewire\Public\BimasIslamMasjidForm::cl
 Route::get('/layanan/bimas-musholla', App\Livewire\Public\BimasIslamMushollaForm::class)->name('layanan.bimas-musholla');
 Route::get('/layanan/bimas-majelis-taklim', App\Livewire\Public\BimasIslamMajelisTaklimForm::class)->name('layanan.bimas-majelis-taklim');
 
+// Zakat & Wakaf
+Route::get('/layanan/zawa', function () {
+    return view('public.category-zawa');
+})->name('layanan.zawa');
+
+Route::get('/layanan/zawa/konsultasi', App\Livewire\Public\ZawaKonsultasiForm::class)->name('layanan.zawa-konsultasi');
+Route::get('/layanan/zawa/tanah', App\Livewire\Public\ZawaTanahForm::class)->name('layanan.zawa-tanah');
+Route::get('/layanan/zawa/nadzir', App\Livewire\Public\ZawaNadzirForm::class)->name('layanan.zawa-nadzir');
+Route::get('/layanan/zawa/tunai', App\Livewire\Public\ZawaTunaiForm::class)->name('layanan.zawa-tunai');
+
 Route::get('/tracking', App\Livewire\Public\TrackingService::class)->name('tracking');

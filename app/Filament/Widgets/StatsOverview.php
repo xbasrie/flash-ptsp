@@ -18,8 +18,14 @@ class StatsOverview extends BaseWidget
             $query->whereHas('service', fn($q) => $q->where('slug', 'like', 'bimas-%'));
         } elseif ($user->hasRole('admin kub')) {
             $query->whereHas('service', fn($q) => $q->where('slug', 'like', 'kub-%'));
+        } elseif ($user->hasRole('admin zawa')) {
+            $query->whereHas('service', fn($q) => $q->where('slug', 'like', 'zawa-%'));
         } elseif ($user->hasRole('admin kepegawaian')) {
-            $query->whereHas('service', fn($q) => $q->whereNotIn('slug', ['kub-pendirian', 'kub-rohaniawan', 'kub-tanah', 'bimas-masjid', 'bimas-musholla', 'bimas-majelis-taklim', 'bimas-nikah']));
+            $query->whereHas('service', fn($q) => $q->where(function ($query) {
+                $query->where('slug', 'not like', 'bimas-%')
+                      ->where('slug', 'not like', 'kub-%')
+                      ->where('slug', 'not like', 'zawa-%');
+            }));
         }
         // Super Admin sees everything by default (no filter added)
 

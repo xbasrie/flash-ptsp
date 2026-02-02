@@ -159,5 +159,41 @@ class ServiceSeeder extends Seeder
                 'is_active' => true,
             ]
         );
+        // Layanan Zakat & Wakaf
+        Service::firstOrCreate(
+            ['slug' => 'zawa-konsultasi'],
+            [
+                'name' => 'Layanan Informasi dan Konsultasi Wakaf',
+                'description' => 'Layanan informasi dan konsultasi terkait wakaf.',
+                'is_active' => true,
+            ]
+        );
+
+        Service::firstOrCreate(
+            ['slug' => 'zawa-tanah'],
+            [
+                'name' => 'Layanan Pendampingan Wakaf Tanah',
+                'description' => 'Layanan pendampingan pengurusan wakaf tanah di KUA.',
+                'is_active' => true,
+            ]
+        );
+
+        Service::firstOrCreate(
+            ['slug' => 'zawa-nadzir'],
+            [
+                'name' => 'Layanan Pergantian Nadzir Wakaf Tanah',
+                'description' => 'Layanan permohonan pergantian Nadzir wakaf tanah.',
+                'is_active' => true,
+            ]
+        );
+
+        Service::firstOrCreate(
+            ['slug' => 'zawa-tunai'],
+            [
+                'name' => 'Layanan Wakaf Tunai',
+                'description' => 'Layanan ikrar dan pembayaran wakaf tunai.',
+                'is_active' => true,
+            ]
+        );
     }
 }

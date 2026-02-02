@@ -18,7 +18,7 @@ class ActivityLogResource extends Resource
     protected static ?string $navigationGroup = 'User Management';
     protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';
     protected static ?string $navigationLabel = 'Log Aktivitas Admin';
-    protected static ?int $navigationSort = 100;
+    protected static ?int $navigationSort = 9002;
 
     public static function form(Form $form): Form
     {

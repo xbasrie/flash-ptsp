@@ -61,6 +61,7 @@ class AdminPanelProvider extends PanelProvider
                 'Layanan Kepegawaian',
                 'Layanan KUB',
                 'Layanan Bimas Islam',
+                'Layanan Zakat & Wakaf',
                 'User Management',
             ]);
     }

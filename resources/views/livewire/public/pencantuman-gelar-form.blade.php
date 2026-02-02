@@ -209,7 +209,10 @@
                     </div>
                      <div class="col-span-1">
                         <label class="block text-sm font-medium text-gray-700 mb-1">Screenshot PDDIKTI</label>
-                        <span class="text-xs text-gray-500 mb-1 block">Contoh: <a href="https://lh7-rt.googleusercontent.com/formsz/AN7BsVAav1GOaynu3d7T4uqj2IFcY4n-rI55Dgc5HMt7soQbbPi5xvMe7JgoTabcxEYUC6QAxi2zyCYGJAPl4f1OZDj27i1ZGrz8Rcjx1lXnSehx2hh6jWvoYifwrIUAbYLrrKzIu_Fp_3DrAVLXcjHjyUrGfMN9Gz3Kjztu05CHT_VHJA29SWdtErzN6OaCdmx061G6fYWIgH9dd2s=w583?key=DcILKcjwjKDYc3OtQ_kAJQ" target="_blank" class="text-indigo-600 hover:underline">Lihat Contoh</a></span>
+                        <div class="mb-2">
+                            <span class="text-xs text-gray-500 mb-1 block">Contoh Valid:</span>
+                            <img src="{{ asset('assets/images/pddikti.png') }}" alt="Contoh Screenshot PDDIKTI" class="rounded-lg border border-gray-200 shadow-sm max-w-full h-auto w-64 hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="window.open(this.src)">
+                        </div>
                         <input type="file" wire:model="screenshot_pddikti" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 transition">
                          @error('screenshot_pddikti') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
                     </div>

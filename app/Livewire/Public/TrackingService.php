@@ -12,7 +12,7 @@ class TrackingService extends Component
     public $logs;
 
     protected $rules = [
-        'tracking_code' => 'required|string|min:15|max:25', // Accommodate CUTI (19) and SATYA (20)
+        'tracking_code' => 'required|string|min:10|max:50',
     ];
 
     public function search()
