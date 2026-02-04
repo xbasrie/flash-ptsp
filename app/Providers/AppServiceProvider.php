@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,5 +25,9 @@ class AppServiceProvider extends ServiceProvider
         \Illuminate\Support\Facades\Gate::policy(\App\Models\Submission::class, \App\Policies\SubmissionPolicy::class);
         
         \App\Models\Submission::observe(\App\Observers\SubmissionObserver::class);
+        // Paksa HTTPS di lingkungan selain lokal
+        if (config('app.env') !== 'local') {
+            URL::forceScheme('https');
+        }
     }
 }
