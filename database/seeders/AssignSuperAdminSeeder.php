@@ -13,17 +13,20 @@ class AssignSuperAdminSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = User::where('email', 'admin@admin.com')->first();
+        // Ensure role exists
+        $roleName = 'super admin';
+        Role::firstOrCreate(['name' => $roleName, 'guard_name' => 'web']);
 
-        if ($user) {
-            // Ensure roles exist
-            $roleName = 'super admin';
-            Role::firstOrCreate(['name' => $roleName, 'guard_name' => 'web']);
-            
-            $user->assignRole($roleName);
-            $this->command->info("Role '$roleName' assigned to {$user->email}");
-        } else {
-            $this->command->error("User with email 'admin@admin.com' not found.");
-        }
+        $user = User::updateOrCreate(
+            ['email' => 'admin@admin.com'],
+            [
+                'name' => 'Super Admin',
+                'password' => \Illuminate\Support\Facades\Hash::make('password'),
+                'email_verified_at' => now(),
+            ]
+        );
+
+        $user->assignRole($roleName);
+        $this->command->info("User {$user->email} created/updated with role '$roleName'.");
     }
 }

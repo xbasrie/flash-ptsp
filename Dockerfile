@@ -38,6 +38,8 @@ WORKDIR /var/www
 
 # Copy custom configurations PHP
 # COPY docker/php/local.ini /usr/local/etc/php/conf.d/local.ini
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
+    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
 USER root
 
