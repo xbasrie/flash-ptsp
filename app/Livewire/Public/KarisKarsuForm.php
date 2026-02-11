@@ -12,6 +12,12 @@ use Livewire\WithFileUploads;
 class KarisKarsuForm extends Component
 {
     use WithFileUploads;
+    use \App\Traits\ChecksServiceStatus;
+
+    public function boot()
+    {
+        $this->checkServiceAvailability('karis-karsu');
+    }
 
     public $nama;
     public $email;
@@ -20,6 +26,7 @@ class KarisKarsuForm extends Component
     public $unit_kerja;
     public $jabatan;
     public $golongan;
+    public $jenis_layanan;
     
     // Files - 6 Requirements
     public $surat_pengantar; // 1
@@ -39,6 +46,7 @@ class KarisKarsuForm extends Component
         'unit_kerja' => 'required|string|max:255',
         'jabatan' => 'required|string|max:255',
         'golongan' => 'required|string',
+        'jenis_layanan' => 'required|in:karis,karsu',
         
         'surat_pengantar' => 'required|file|mimes:pdf|max:2048',
         'sk_cpns' => 'required|file|mimes:pdf|max:2048',
@@ -54,12 +62,13 @@ class KarisKarsuForm extends Component
 
         $service = Service::where('slug', 'karis-karsu')->firstOrFail();
 
-        $files = [];
         $file_fields = [
             'surat_pengantar', 'sk_cpns', 'sk_pns',
             'akta_nikah', 'laporan_perkawinan', 'pasfoto'
         ];
 
+        // Process file uploads...
+        $files = [];
         foreach ($file_fields as $field) {
             if ($this->$field) {
                 $files[$field] = $this->$field->store('attachments/karis-karsu', 'public');
@@ -80,6 +89,7 @@ class KarisKarsuForm extends Component
                 'unit_kerja' => $this->unit_kerja,
                 'jabatan' => $this->jabatan,
                 'golongan' => $this->golongan,
+                'jenis_layanan' => $this->jenis_layanan,
                 'files' => $files,
             ],
         ]);

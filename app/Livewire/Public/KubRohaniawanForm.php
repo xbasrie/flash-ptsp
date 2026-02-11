@@ -12,6 +12,12 @@ use App\Models\TrackingLog;
 class KubRohaniawanForm extends Component
 {
     use WithFileUploads;
+    use \App\Traits\ChecksServiceStatus;
+
+    public function boot()
+    {
+        $this->checkServiceAvailability('kub-rohaniawan');
+    }
 
     public $nama;
     public $email;

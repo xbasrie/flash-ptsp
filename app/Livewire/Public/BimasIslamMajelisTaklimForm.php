@@ -12,6 +12,12 @@ use App\Models\TrackingLog;
 class BimasIslamMajelisTaklimForm extends Component
 {
     use WithFileUploads;
+    use \App\Traits\ChecksServiceStatus;
+
+    public function boot()
+    {
+        $this->checkServiceAvailability('bimas-majelis-taklim');
+    }
 
     public $nama;
     public $no_hp;

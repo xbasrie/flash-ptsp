@@ -9,6 +9,12 @@ use Illuminate\Support\Str;
 class CutiForm extends Component
 {
     use WithFileUploads;
+    use \App\Traits\ChecksServiceStatus;
+
+    public function boot()
+    {
+        $this->checkServiceAvailability('cuti');
+    }
 
     public $nama;
     public $email;

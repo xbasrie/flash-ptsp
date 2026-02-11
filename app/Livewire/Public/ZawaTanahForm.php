@@ -12,6 +12,12 @@ use App\Models\TrackingLog;
 class ZawaTanahForm extends Component
 {
     use WithFileUploads;
+    use \App\Traits\ChecksServiceStatus;
+
+    public function boot()
+    {
+        $this->checkServiceAvailability('zawa-tanah');
+    }
 
     public $nama;
     public $email;

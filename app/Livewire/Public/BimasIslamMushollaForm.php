@@ -12,6 +12,12 @@ use App\Models\TrackingLog;
 class BimasIslamMushollaForm extends Component
 {
     use WithFileUploads;
+    use \App\Traits\ChecksServiceStatus;
+
+    public function boot()
+    {
+        $this->checkServiceAvailability('bimas-musholla');
+    }
 
     public $nama;
     public $no_hp;

@@ -12,6 +12,12 @@ use App\Models\TrackingLog;
 class PensiunForm extends Component
 {
     use WithFileUploads;
+    use \App\Traits\ChecksServiceStatus;
+
+    public function boot()
+    {
+        $this->checkServiceAvailability('pensiun');
+    }
 
     public $jenis_pensiun = 'bup'; // bup, janda_duda, uzur, aps
 

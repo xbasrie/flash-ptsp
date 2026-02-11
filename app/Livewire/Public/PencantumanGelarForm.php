@@ -12,6 +12,12 @@ use Livewire\WithFileUploads;
 class PencantumanGelarForm extends Component
 {
     use WithFileUploads;
+    use \App\Traits\ChecksServiceStatus;
+
+    public function boot()
+    {
+        $this->checkServiceAvailability('pencantuman-gelar');
+    }
 
     public $nama;
     public $email;

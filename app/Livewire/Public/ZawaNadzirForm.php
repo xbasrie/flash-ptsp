@@ -12,6 +12,12 @@ use App\Models\TrackingLog;
 class ZawaNadzirForm extends Component
 {
     use WithFileUploads;
+    use \App\Traits\ChecksServiceStatus;
+
+    public function boot()
+    {
+        $this->checkServiceAvailability('zawa-nadzir');
+    }
 
     public $nama;
     public $email;

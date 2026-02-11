@@ -12,6 +12,12 @@ use App\Models\TrackingLog;
 class KubPendirianForm extends Component
 {
     use WithFileUploads;
+    use \App\Traits\ChecksServiceStatus;
+
+    public function boot()
+    {
+        $this->checkServiceAvailability('kub-pendirian');
+    }
 
     public $nama;
     public $email;

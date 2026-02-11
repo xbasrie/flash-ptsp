@@ -12,6 +12,12 @@ use App\Models\TrackingLog;
 class KubTanahForm extends Component
 {
     use WithFileUploads;
+    use \App\Traits\ChecksServiceStatus;
+
+    public function boot()
+    {
+        $this->checkServiceAvailability('kub-tanah');
+    }
 
     public $nama;
     public $email;

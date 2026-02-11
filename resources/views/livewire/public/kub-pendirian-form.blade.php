@@ -44,6 +44,7 @@
     <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
         <div class="bg-gradient-to-r from-teal-500 to-teal-600 h-2"></div>
 
+        @if($isServiceOpen)
         <form wire:submit.prevent="save" class="p-8 space-y-8">
             
             <!-- Section 1: Identitas Pemohon -->
@@ -154,5 +155,21 @@
                 </button>
             </div>
         </form>
+        @else
+            <div class="p-8 text-center bg-gray-50">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-100 mb-4">
+                    <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Layanan Sedang Ditutup</h3>
+                <p class="text-gray-500">Mohon maaf, layanan ini sedang tidak menerima pengajuan baru saat ini. Silakan coba lagi nanti.</p>
+                <div class="mt-6">
+                     <a href="{{ route('layanan.kub') }}" class="inline-flex items-center text-teal-600 hover:text-teal-700 font-medium">
+                        &larr; Kembali ke Layanan KUB
+                     </a>
+                </div>
+            </div>
+        @endif
     </div>
 </div>

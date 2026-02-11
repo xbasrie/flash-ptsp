@@ -12,6 +12,12 @@ use Livewire\WithFileUploads;
 class JenjangJfForm extends Component
 {
     use WithFileUploads;
+    use \App\Traits\ChecksServiceStatus;
+
+    public function boot()
+    {
+        $this->checkServiceAvailability('jenjang-jf');
+    }
 
     public $nama;
     public $email;

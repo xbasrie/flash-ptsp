@@ -12,6 +12,12 @@ use App\Models\TrackingLog;
 class SatyaLencanaForm extends Component
 {
     use WithFileUploads;
+    use \App\Traits\ChecksServiceStatus;
+
+    public function boot()
+    {
+        $this->checkServiceAvailability('satya-lencana');
+    }
 
     public $nama;
     public $email;

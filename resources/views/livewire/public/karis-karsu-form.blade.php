@@ -67,150 +67,196 @@
     <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
         <div class="bg-gradient-to-r from-rose-500 to-rose-600 h-2"></div>
 
-        <form wire:submit.prevent="save" class="p-8 space-y-8">
+
             
-            <!-- Section 1: Identitas Pemohon -->
-            <section>
-                <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-rose-100 text-rose-600 text-sm font-bold mr-3">1</span>
-                    Identitas Pemohon
-                </h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="col-span-1">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
-                        <input type="text" wire:model="nama" class="w-full rounded-lg border-gray-300 focus:border-rose-500 focus:ring-rose-500 transition shadow-sm">
-                        @error('nama') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="col-span-1">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                        <input type="email" wire:model="email" class="w-full rounded-lg border-gray-300 focus:border-rose-500 focus:ring-rose-500 transition shadow-sm" placeholder="Email aktif">
-                        @error('email') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="col-span-1">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">NIP</label>
-                        <input type="text" wire:model="nip" class="w-full rounded-lg border-gray-300 focus:border-rose-500 focus:ring-rose-500 transition shadow-sm">
-                        @error('nip') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="col-span-1">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">No HP / WhatsApp</label>
-                        <input type="text" wire:model="no_hp" class="w-full rounded-lg border-gray-300 focus:border-rose-500 focus:ring-rose-500 transition shadow-sm">
-                        @error('no_hp') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="col-span-1">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Unit Kerja</label>
-                        <input type="text" wire:model="unit_kerja" class="w-full rounded-lg border-gray-300 focus:border-rose-500 focus:ring-rose-500 transition shadow-sm">
-                        @error('unit_kerja') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="col-span-1">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Jabatan</label>
-                        <input type="text" wire:model="jabatan" class="w-full rounded-lg border-gray-300 focus:border-rose-500 focus:ring-rose-500 transition shadow-sm">
-                        @error('jabatan') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="col-span-1">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Pangkat / Golongan</label>
-                         <select wire:model="golongan" class="w-full rounded-lg border-gray-300 focus:border-rose-500 focus:ring-rose-500 transition shadow-sm">
-                            <option value="">-- Pilih Golongan --</option>
-                            <option value="Juru Muda (I/a)">Juru Muda (I/a)</option>
-                            <option value="Juru Muda Tingkat I (I/b)">Juru Muda Tingkat I (I/b)</option>
-                            <option value="Juru (I/c)">Juru (I/c)</option>
-                            <option value="Juru Tingkat I (I/d)">Juru Tingkat I (I/d)</option>
-                            <option value="Pengatur Muda (II/a)">Pengatur Muda (II/a)</option>
-                            <option value="Pengatur Muda Tingkat I (II/b)">Pengatur Muda Tingkat I (II/b)</option>
-                            <option value="Pengatur (II/c)">Pengatur (II/c)</option>
-                            <option value="Pengatur Tingkat I (II/d)">Pengatur Tingkat I (II/d)</option>
-                            <option value="Penata Muda (III/a)">Penata Muda (III/a)</option>
-                            <option value="Penata Muda Tingkat I (III/b)">Penata Muda Tingkat I (III/b)</option>
-                            <option value="Penata (III/c)">Penata (III/c)</option>
-                            <option value="Penata Tingkat I (III/d)">Penata Tingkat I (III/d)</option>
-                            <option value="Pembina (IV/a)">Pembina (IV/a)</option>
-                            <option value="Pembina Tingkat I (IV/b)">Pembina Tingkat I (IV/b)</option>
-                            <option value="Pembina Utama Muda (IV/c)">Pembina Utama Muda (IV/c)</option>
-                            <option value="Pembina Utama Madya (IV/d)">Pembina Utama Madya (IV/d)</option>
-                            <option value="Pembina Utama (IV/e)">Pembina Utama (IV/e)</option>
-                            <option value="Golongan I">Golongan I</option>
-                            <option value="Golongan II">Golongan II</option>
-                            <option value="Golongan III">Golongan III</option>
-                            <option value="Golongan IV">Golongan IV</option>
-                            <option value="Golongan V">Golongan V</option>
-                            <option value="Golongan VI">Golongan VI</option>
-                            <option value="Golongan VII">Golongan VII</option>
-                            <option value="Golongan VIII">Golongan VIII</option>
-                            <option value="Golongan IX">Golongan IX</option>
-                            <option value="Golongan X">Golongan X</option>
-                            <option value="Golongan XI">Golongan XI</option>
-                            <option value="Golongan XII">Golongan XII</option>
-                            <option value="Golongan XIII">Golongan XIII</option>
-                            <option value="Golongan XIV">Golongan XIV</option>
-                            <option value="Golongan XV">Golongan XV</option>
-                            <option value="Golongan XVI">Golongan XVI</option>
-                            <option value="Golongan XVII">Golongan XVII</option>
-                        </select>
-                        @error('golongan') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
-                    </div>
-                </div>
-            </section>
 
-            <hr class="border-gray-100">
+        @if($isServiceOpen)
+            <form wire:submit.prevent="save" class="p-8 space-y-8">
+                
+                <!-- Section 1: Identitas Pemohon -->
+                <section>
+                    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-cyan-100 text-cyan-600 text-sm font-bold mr-3">1</span>
+                        Identitas Pemohon
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="col-span-1">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+                            <input type="text" wire:model="nama" class="w-full rounded-lg border-gray-300 focus:border-cyan-500 focus:ring-cyan-500 transition shadow-sm">
+                            @error('nama') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" wire:model="email" class="w-full rounded-lg border-gray-300 focus:border-cyan-500 focus:ring-cyan-500 transition shadow-sm" placeholder="Email aktif">
+                            @error('email') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">NIP</label>
+                            <input type="text" wire:model="nip" class="w-full rounded-lg border-gray-300 focus:border-cyan-500 focus:ring-cyan-500 transition shadow-sm">
+                            @error('nip') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">No HP / WhatsApp</label>
+                            <input type="text" wire:model="no_hp" class="w-full rounded-lg border-gray-300 focus:border-cyan-500 focus:ring-cyan-500 transition shadow-sm">
+                            @error('no_hp') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Unit Kerja</label>
+                            <input type="text" wire:model="unit_kerja" class="w-full rounded-lg border-gray-300 focus:border-cyan-500 focus:ring-cyan-500 transition shadow-sm">
+                            @error('unit_kerja') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Jabatan</label>
+                            <input type="text" wire:model="jabatan" class="w-full rounded-lg border-gray-300 focus:border-rose-500 focus:ring-rose-500 transition shadow-sm">
+                            @error('jabatan') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Pangkat / Golongan</label>
+                            <select wire:model="golongan" class="w-full rounded-lg border-gray-300 focus:border-rose-500 focus:ring-rose-500 transition shadow-sm">
+                                <option value="">-- Pilih Golongan --</option>
+                                <option value="Juru Muda (I/a)">Juru Muda (I/a)</option>
+                                <option value="Juru Muda Tingkat I (I/b)">Juru Muda Tingkat I (I/b)</option>
+                                <option value="Juru (I/c)">Juru (I/c)</option>
+                                <option value="Juru Tingkat I (I/d)">Juru Tingkat I (I/d)</option>
+                                <option value="Pengatur Muda (II/a)">Pengatur Muda (II/a)</option>
+                                <option value="Pengatur Muda Tingkat I (II/b)">Pengatur Muda Tingkat I (II/b)</option>
+                                <option value="Pengatur (II/c)">Pengatur (II/c)</option>
+                                <option value="Pengatur Tingkat I (II/d)">Pengatur Tingkat I (II/d)</option>
+                                <option value="Penata Muda (III/a)">Penata Muda (III/a)</option>
+                                <option value="Penata Muda Tingkat I (III/b)">Penata Muda Tingkat I (III/b)</option>
+                                <option value="Penata (III/c)">Penata (III/c)</option>
+                                <option value="Penata Tingkat I (III/d)">Penata Tingkat I (III/d)</option>
+                                <option value="Pembina (IV/a)">Pembina (IV/a)</option>
+                                <option value="Pembina Tingkat I (IV/b)">Pembina Tingkat I (IV/b)</option>
+                                <option value="Pembina Utama Muda (IV/c)">Pembina Utama Muda (IV/c)</option>
+                                <option value="Pembina Utama Madya (IV/d)">Pembina Utama Madya (IV/d)</option>
+                                <option value="Pembina Utama (IV/e)">Pembina Utama (IV/e)</option>
+                                <option value="Golongan I">Golongan I</option>
+                                <option value="Golongan II">Golongan II</option>
+                                <option value="Golongan III">Golongan III</option>
+                                <option value="Golongan IV">Golongan IV</option>
+                                <option value="Golongan V">Golongan V</option>
+                                <option value="Golongan VI">Golongan VI</option>
+                                <option value="Golongan VII">Golongan VII</option>
+                                <option value="Golongan VIII">Golongan VIII</option>
+                                <option value="Golongan IX">Golongan IX</option>
+                                <option value="Golongan X">Golongan X</option>
+                                <option value="Golongan XI">Golongan XI</option>
+                                <option value="Golongan XII">Golongan XII</option>
+                                <option value="Golongan XIII">Golongan XIII</option>
+                                <option value="Golongan XIV">Golongan XIV</option>
+                                <option value="Golongan XV">Golongan XV</option>
+                                <option value="Golongan XVI">Golongan XVI</option>
+                                <option value="Golongan XVII">Golongan XVII</option>
+                            </select>
+                            @error('golongan') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                        </div>
+                    </div>
+                </section>
 
-            <!-- Section 2: Berkas Persyaratan -->
-            <section>
-                <div class="flex items-center justify-between mb-6">
-                     <h3 class="text-xl font-bold text-gray-800 flex items-center">
-                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-rose-100 text-rose-600 text-sm font-bold mr-3">2</span>
+                <!-- Section 2: Jenis Layanan -->
+                <section>
+                    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-cyan-100 text-cyan-600 text-sm font-bold mr-3">2</span>
+                        Jenis Kartu
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <button type="button" wire:click="$set('jenis_layanan', 'karis')"
+                            class="px-4 py-3 rounded-lg font-bold text-sm transition-all duration-300 border focus:outline-none {{ $jenis_layanan === 'karis' ? 'bg-cyan-600 text-white border-cyan-600 shadow-md' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50' }}">
+                            Kartu Istri (KARIS)
+                        </button>
+                        <button type="button" wire:click="$set('jenis_layanan', 'karsu')"
+                            class="px-4 py-3 rounded-lg font-bold text-sm transition-all duration-300 border focus:outline-none {{ $jenis_layanan === 'karsu' ? 'bg-cyan-600 text-white border-cyan-600 shadow-md' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50' }}">
+                            Kartu Suami (KARSU)
+                        </button>
+                    </div>
+                    @error('jenis_layanan') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+                </section>
+
+                <hr class="border-gray-100">
+
+                <!-- Section 3: Berkas Persyaratan -->
+                @if($jenis_layanan)
+                <section>
+                    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-cyan-100 text-cyan-600 text-sm font-bold mr-3">3</span>
                         Berkas Persyaratan
                     </h3>
-                    <div class="text-xs text-gray-500 italic max-w-xs text-right">
-                         Pastikan semua dokumen dalam format PDF (max 2MB), kecuali pasfoto.
-                     </div>
-                </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="col-span-1">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Surat Pengantar dari Satker</label>
+                            <input type="file" wire:model="surat_pengantar" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-cyan-50 file:text-cyan-700 hover:file:bg-cyan-100 transition">
+                             @error('surat_pengantar') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                        </div>
+                         <div class="col-span-1">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Laporan Perkawinan Pertama (LPP)</label>
+                            <input type="file" wire:model="laporan_perkawinan" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-cyan-50 file:text-cyan-700 hover:file:bg-cyan-100 transition">
+                             @error('laporan_perkawinan') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Daftar Susunan Keluarga (DSK)</label>
+                            <input type="file" wire:model="daftar_keluarga" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-cyan-50 file:text-cyan-700 hover:file:bg-cyan-100 transition">
+                             @error('daftar_keluarga') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">SK CPNS 80%</label>
+                            <input type="file" wire:model="sk_cpns" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-cyan-50 file:text-cyan-700 hover:file:bg-cyan-100 transition">
+                             @error('sk_cpns') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">SK PNS 100%</label>
+                            <input type="file" wire:model="sk_pns" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-cyan-50 file:text-cyan-700 hover:file:bg-cyan-100 transition">
+                             @error('sk_pns') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                        </div>
+                         <div class="col-span-1">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Akta Nikah / Buku Nikah</label>
+                            <input type="file" wire:model="akta_nikah" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-cyan-50 file:text-cyan-700 hover:file:bg-cyan-100 transition">
+                             @error('akta_nikah') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Pas Foto Pasangan (2x3)</label>
+                            <input type="file" wire:model="pas_foto" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-cyan-50 file:text-cyan-700 hover:file:bg-cyan-100 transition">
+                             @error('pas_foto') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                        </div>
+                         <div class="col-span-1">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Dokumen Pendukung Lainnya</label>
+                            <input type="file" wire:model="dokumen_pendukung" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-cyan-50 file:text-cyan-700 hover:file:bg-cyan-100 transition">
+                             @error('dokumen_pendukung') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                        </div>
+                    </div>
+                </section>
+                @endif
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="col-span-1">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Surat Pengantar</label>
-                        <input type="file" wire:model="surat_pengantar" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-rose-50 file:text-rose-700 hover:file:bg-rose-100 transition">
-                         @error('surat_pengantar') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                <!-- Actions -->
+                <div class="pt-6 border-t border-gray-100 flex justify-end">
+                    <button type="submit" class="bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg transform transition hover:-translate-y-1 hover:shadow-xl flex items-center">
+                        <svg wire:loading.remove xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                        </svg>
+                        <svg wire:loading class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Kirim Permohonan
+                    </button>
+                </div>
+            </form>
+            @else
+                <div class="p-8 text-center bg-gray-50">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-100 mb-4">
+                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
                     </div>
-                     <div class="col-span-1">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">SK CPNS</label>
-                        <input type="file" wire:model="sk_cpns" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-rose-50 file:text-rose-700 hover:file:bg-rose-100 transition">
-                         @error('sk_cpns') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="col-span-1">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">SK PNS</label>
-                        <input type="file" wire:model="sk_pns" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-rose-50 file:text-rose-700 hover:file:bg-rose-100 transition">
-                         @error('sk_pns') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="col-span-1">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Akta Nikah (KUA)</label>
-                        <input type="file" wire:model="akta_nikah" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-rose-50 file:text-rose-700 hover:file:bg-rose-100 transition">
-                         @error('akta_nikah') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
-                    </div>
-                     <div class="col-span-1">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Blanko Laporan Perkawinan</label>
-                        <input type="file" wire:model="laporan_perkawinan" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-rose-50 file:text-rose-700 hover:file:bg-rose-100 transition">
-                         @error('laporan_perkawinan') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
-                    </div>
-                     <div class="col-span-1">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Pasfoto 2x3</label>
-                        <input type="file" wire:model="pasfoto" accept="image/png, image/jpeg, image/jpg" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-rose-50 file:text-rose-700 hover:file:bg-rose-100 transition">
-                         @error('pasfoto') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Layanan Sedang Ditutup</h3>
+                    <p class="text-gray-500">Mohon maaf, layanan ini sedang tidak menerima pengajuan baru saat ini. Silakan coba lagi nanti.</p>
+                    <div class="mt-6">
+                         <a href="{{ route('layanan.kepegawaian') }}" class="inline-flex items-center text-cyan-600 hover:text-cyan-700 font-medium">
+                            &larr; Kembali ke Layanan Kepegawaian
+                         </a>
                     </div>
                 </div>
-            </section>
-
-            <!-- Actions -->
-            <div class="pt-6 border-t border-gray-100 flex justify-end">
-                <button type="submit" class="bg-rose-600 hover:bg-rose-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg transform transition hover:-translate-y-1 hover:shadow-xl flex items-center">
-                    <svg wire:loading.remove xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                    </svg>
-                    <svg wire:loading class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Kirim Permohonan
-                </button>
-            </div>
-        </form>
+            @endif
     </div>
 </div>

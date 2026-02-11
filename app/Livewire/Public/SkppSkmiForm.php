@@ -12,6 +12,12 @@ use Livewire\WithFileUploads;
 class SkppSkmiForm extends Component
 {
     use WithFileUploads;
+    use \App\Traits\ChecksServiceStatus;
+
+    public function boot()
+    {
+        $this->checkServiceAvailability('skpp-skmi');
+    }
 
     public $nama;
     public $email;

@@ -12,6 +12,12 @@ use App\Models\TrackingLog;
 class KenaikanPangkatForm extends Component
 {
     use WithFileUploads;
+    use \App\Traits\ChecksServiceStatus;
+
+    public function boot()
+    {
+        $this->checkServiceAvailability('kenaikan-pangkat');
+    }
 
     public $jenis_kenaikan_pangkat = 'fungsional'; // fungsional, reguler, struktural, penyesuaian_ijazah
 

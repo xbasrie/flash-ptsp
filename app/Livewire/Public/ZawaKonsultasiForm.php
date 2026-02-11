@@ -10,6 +10,12 @@ use App\Models\TrackingLog;
 
 class ZawaKonsultasiForm extends Component
 {
+    use \App\Traits\ChecksServiceStatus;
+
+    public function boot()
+    {
+        $this->checkServiceAvailability('zawa-konsultasi');
+    }
     public $nama;
     public $email;
     public $no_hp;

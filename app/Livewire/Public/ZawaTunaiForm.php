@@ -12,6 +12,12 @@ use App\Models\TrackingLog;
 class ZawaTunaiForm extends Component
 {
     use WithFileUploads;
+    use \App\Traits\ChecksServiceStatus;
+
+    public function boot()
+    {
+        $this->checkServiceAvailability('zawa-tunai');
+    }
 
     public $nama;
     public $nik;

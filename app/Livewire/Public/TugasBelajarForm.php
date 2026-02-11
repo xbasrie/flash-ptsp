@@ -12,6 +12,12 @@ use App\Models\TrackingLog;
 class TugasBelajarForm extends Component
 {
     use WithFileUploads;
+    use \App\Traits\ChecksServiceStatus;
+
+    public function boot()
+    {
+        $this->checkServiceAvailability('tugas-belajar');
+    }
 
     public $jenis_tugas_belajar = 'mandiri'; // mandiri, beasiswa
 
