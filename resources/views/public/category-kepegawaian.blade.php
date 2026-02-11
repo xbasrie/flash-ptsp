@@ -252,6 +252,28 @@
                     </svg>
                 </div>
             </a>
+
+            <!-- Usul Ralat Data SIASN -->
+            <a x-show="search === '' || $el.innerText.toLowerCase().includes(search.toLowerCase())" href="{{ route('layanan.usul-ralat-data-siasn') }}" class="group block bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-100 h-full flex flex-col justify-between">
+                <div class="p-6 flex-grow">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="h-14 w-14 bg-teal-100 rounded-xl flex items-center justify-center text-teal-600 group-hover:bg-teal-600 group-hover:text-white transition-colors duration-300 shadow-sm">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                            </svg>
+                        </div>
+                        <span class="bg-teal-100 text-teal-800 text-xs font-semibold px-2.5 py-0.5 rounded-full group-hover:bg-teal-200">Online</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-teal-700 transition">Usul Ralat Data SIASN</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Layanan usul perbaikan data pada sistem SIASN BKN.</p>
+                </div>
+                 <div class="bg-gray-50 px-6 py-4 flex justify-between items-center group-hover:bg-teal-50 transition">
+                    <span class="text-xs font-semibold text-gray-400 group-hover:text-teal-600 uppercase tracking-wider">Mulai Pengajuan</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 group-hover:text-teal-600 transform group-hover:translate-x-1 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </div>
+            </a>
         </div>
 
         <div class="mt-12 text-center">

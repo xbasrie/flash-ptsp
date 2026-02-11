@@ -204,5 +204,13 @@ class ServiceSeeder extends Seeder
                 'is_active' => true,
             ]
         );
+        Service::firstOrCreate(
+            ['slug' => 'usul-ralat-data-siasn'],
+            [
+                'name' => 'Usul Ralat Data SIASN BKN',
+                'description' => 'Layanan usul perbaikan data pada sistem SIASN BKN.',
+                'is_active' => true,
+            ]
+        );
     }
 }

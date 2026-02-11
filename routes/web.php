@@ -24,6 +24,7 @@ Route::get('/layanan/jenjang-jf', App\Livewire\Public\JenjangJfForm::class)->nam
 Route::get('/layanan/skpp-skmi', App\Livewire\Public\SkppSkmiForm::class)->name('layanan.skpp-skmi');
 Route::get('/layanan/pencantuman-gelar', App\Livewire\Public\PencantumanGelarForm::class)->name('layanan.pencantuman-gelar');
 Route::get('/layanan/karis-karsu', App\Livewire\Public\KarisKarsuForm::class)->name('layanan.karis-karsu');
+Route::get('/layanan/usul-ralat-data-siasn', App\Livewire\Public\UsulDataSiasnForm::class)->name('layanan.usul-ralat-data-siasn');
 
 // KUB
 Route::get('/layanan/kub/pendirian', App\Livewire\Public\KubPendirianForm::class)->name('layanan.kub-pendirian');
