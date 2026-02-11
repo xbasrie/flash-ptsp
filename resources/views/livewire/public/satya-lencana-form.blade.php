@@ -246,7 +246,9 @@
 
                      <!-- DRH -->
                     <div class="col-span-1">
-                        <label class="block text-sm font-medium text-gray-700 mb-1">DRH Singkat (Dari Aplikasi)</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">
+                            DRH <a href="http://docs.google.com/document/d/1ybBOIbxOks_lJBDiNZCzm0W-5FR4HRdk/edit" target="_blank" class="text-blue-600 hover:text-blue-800 underline text-xs ml-1">(Download Template)</a>
+                        </label>
                         <input type="file" wire:model="drh" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-yellow-50 file:text-yellow-700 hover:file:bg-yellow-100 transition">
                         <p class="text-xs text-gray-400 mt-1">PDF/JPG, Maks 2MB.</p>
                         @error('drh') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
