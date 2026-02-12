@@ -53,6 +53,12 @@ class SubmissionStatusChanged extends Mailable
      */
     public function attachments(): array
     {
+        if ($this->submission->attachment) {
+            return [
+                \Illuminate\Mail\Mailables\Attachment::fromPath(storage_path('app/public/' . $this->submission->attachment)),
+            ];
+        }
+
         return [];
     }
 }

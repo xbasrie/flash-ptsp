@@ -35,7 +35,7 @@
             <div class="bg-gray-50 px-6 py-4 border-b border-gray-200 flex justify-between items-center">
                 <div>
                     <h3 class="text-lg font-bold text-gray-800">{{ $submission->service->name }}</h3>
-                    <p class="text-sm text-gray-500">Diajukan: {{ $submission->created_at->format('d M Y H:i') }}</p>
+                    <p class="text-sm text-gray-500">Diajukan: {{ $submission->created_at->timezone('Asia/Jakarta')->format('d M Y H:i') }} WIB</p>
                 </div>
                 <div class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide
                     {{ $submission->status == 'approved' ? 'bg-green-100 text-green-800' : 
@@ -63,7 +63,7 @@
                                 {{ $loop->first ? 'bg-green-500' : 'bg-gray-300' }}"></div>
                             
                             <div>
-                                <span class="text-xs text-gray-500 font-mono">{{ $log->created_at->format('d M Y, H:i') }}</span>
+                                <span class="text-xs text-gray-500 font-mono">{{ $log->created_at->timezone('Asia/Jakarta')->format('d M Y, H:i') }} WIB</span>
                                 <h4 class="text-base font-bold text-gray-800 capitalize">
                                     {{ 
                                         match($log->status) {
@@ -78,6 +78,15 @@
                                 @if ($log->note)
                                     <p class="text-gray-600 mt-1 bg-gray-50 p-2 rounded text-sm italic">"{!! preg_replace('/(https?:\/\/[^\s]+)/', '<a href="$1" target="_blank" class="text-blue-600 hover:text-blue-800 underline">$1</a>', e($log->note)) !!}"</p>
                                 @endif
+
+                                @if ($log->attachment)
+                                    <div class="mt-2">
+                                        <a href="{{ asset('storage/' . $log->attachment) }}" target="_blank" class="inline-flex items-center text-sm text-blue-600 hover:text-blue-800 hover:underline transition-colors">
+                                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                                            Lihat Lampiran
+                                        </a>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     @endforeach
@@ -86,7 +95,7 @@
                     <div class="relative pl-8">
                         <div class="absolute -left-2.5 top-0 w-5 h-5 rounded-full border-2 border-white bg-green-500"></div>
                         <div>
-                            <span class="text-xs text-gray-500 font-mono">{{ $submission->created_at->format('d M Y, H:i') }}</span>
+                            <span class="text-xs text-gray-500 font-mono">{{ $submission->created_at->timezone('Asia/Jakarta')->format('d M Y, H:i') }} WIB</span>
                             <h4 class="text-base font-bold text-gray-800">Permohonan Diterima</h4>
                             <p class="text-gray-600 mt-1 text-sm">Sistem telah menerima permohonan Anda.</p>
                         </div>

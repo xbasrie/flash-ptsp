@@ -156,17 +156,25 @@ class BimasIslamMushollaSubmissionResource extends Resource
                         Forms\Components\Textarea::make('note')
                             ->label('Catatan')
                             ->rows(3),
+                        Forms\Components\FileUpload::make('attachment')
+                            ->label('Lampiran')
+                            ->disk('public')
+                            ->directory('attachments')
+                            ->downloadable()
+                            ->openable(),
                     ])
                     ->action(function (Submission $record, array $data) {
                         $record->update([
                             'status' => $data['status'],
                             'admin_note' => $data['note'] ?? null,
+                            'attachment' => $data['attachment'] ?? null,
                         ]);
                         
                         TrackingLog::create([
                             'submission_id' => $record->id,
                             'status' => $data['status'],
                             'note' => $data['note'] ?? 'Status diperbarui oleh admin',
+                            'attachment' => $data['attachment'] ?? null,
                         ]);
 
                         \App\Services\ActivityLogger::log(

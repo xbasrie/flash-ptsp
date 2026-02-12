@@ -107,17 +107,25 @@ class PencantumanGelarSubmissionResource extends Resource
                         Forms\Components\Textarea::make('admin_note')
                             ->label('Catatan Admin')
                             ->required(),
+                        Forms\Components\FileUpload::make('attachment')
+                            ->label('Lampiran')
+                            ->disk('public')
+                            ->directory('attachments')
+                            ->downloadable()
+                            ->openable(),
                     ])
                     ->action(function (Submission $record, array $data): void {
                         $record->update([
                             'status' => $data['status'],
                             'admin_note' => $data['admin_note'] ?? null,
+                            'attachment' => $data['attachment'] ?? null,
                         ]);
 
                         \App\Models\TrackingLog::create([
                             'submission_id' => $record->id,
                             'status' => $data['status'],
                             'note' => $data['admin_note'],
+                            'attachment' => $data['attachment'] ?? null,
                         ]);
 
                         \App\Services\ActivityLogger::log(
