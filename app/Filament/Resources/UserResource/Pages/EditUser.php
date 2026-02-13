@@ -7,14 +7,13 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditUser extends EditRecord
 {
+    use \App\Traits\LogsViewAccess;
+
     protected static string $resource = UserResource::class;
 
-    protected function afterSave(): void
+    public function mount($record): void
     {
-        \App\Services\ActivityLogger::log(
-            'updated',
-            'Memperbarui user: ' . $this->record->name,
-            $this->record
-        );
+        parent::mount($record);
+        $this->logViewAccess();
     }
 }

@@ -7,7 +7,15 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditService extends EditRecord
 {
+    use \App\Traits\LogsViewAccess;
+
     protected static string $resource = ServiceResource::class;
+
+    public function mount($record): void
+    {
+        parent::mount($record);
+        $this->logViewAccess();
+    }
 
     protected function getHeaderActions(): array
     {

@@ -20,6 +20,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        \Illuminate\Support\Facades\Event::subscribe(\App\Listeners\LogAuthentication::class);
+
         \Illuminate\Support\Facades\Gate::policy(\App\Models\User::class, \App\Policies\UserPolicy::class);
         \Illuminate\Support\Facades\Gate::policy(\Spatie\Permission\Models\Role::class, \App\Policies\RolePolicy::class);
         \Illuminate\Support\Facades\Gate::policy(\App\Models\Submission::class, \App\Policies\SubmissionPolicy::class);

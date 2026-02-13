@@ -8,7 +8,15 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditCutiSubmission extends EditRecord
 {
+    use \App\Traits\LogsViewAccess;
+
     protected static string $resource = CutiSubmissionResource::class;
+
+    public function mount($record): void
+    {
+        parent::mount($record);
+        $this->logViewAccess();
+    }
 
     protected function getHeaderActions(): array
     {
