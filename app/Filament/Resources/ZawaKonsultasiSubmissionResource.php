@@ -15,6 +15,8 @@ use App\Models\TrackingLog;
 
 class ZawaKonsultasiSubmissionResource extends Resource
 {
+    use \App\Filament\Traits\HasPermissionAccess;
+
     protected static ?string $model = Submission::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-left-right';
@@ -177,10 +179,6 @@ class ZawaKonsultasiSubmissionResource extends Resource
         return 'warning';
     }
 
-    public static function canAccess(): bool
-    {
-        return auth()->user()->hasRole(['super admin', 'admin zawa']);
-    }
 
     public static function canCreate(): bool
     {

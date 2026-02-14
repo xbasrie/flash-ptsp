@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Builder;
 
 class ActivityLogResource extends Resource
 {
+    use \App\Filament\Traits\HasPermissionAccess;
+
     protected static ?string $model = ActivityLog::class;
 
     protected static ?string $navigationGroup = 'User Management';
@@ -101,10 +103,6 @@ class ActivityLogResource extends Resource
         ];
     }
 
-    public static function canAccess(): bool
-    {
-        return auth()->user()->hasRole('super admin');
-    }
 
     public static function canCreate(): bool
     {

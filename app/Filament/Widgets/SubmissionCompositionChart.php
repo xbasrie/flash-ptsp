@@ -5,13 +5,12 @@ namespace App\Filament\Widgets;
 use App\Models\Submission;
 use Filament\Widgets\ChartWidget;
 use Illuminate\Support\Facades\Auth;
-use Flowframe\Trend\Trend;
-use Flowframe\Trend\TrendValue;
+use Illuminate\Support\Facades\DB;
 
-class SubmissionsChart extends ChartWidget
+class SubmissionCompositionChart extends ChartWidget
 {
-    protected static ?string $heading = 'Grafik Permohonan';
-    protected static ?int $sort = 2;
+    protected static ?string $heading = 'Komposisi Permohonan per Layanan';
+    protected static ?int $sort = 3;
 
     protected function getData(): array
     {
@@ -19,7 +18,7 @@ class SubmissionsChart extends ChartWidget
         $query = Submission::query();
 
         if (! $user->hasRole('super admin')) {
-            // NEW APPROACH: Iterate Resources to find accessible Services
+            // Robust filtering logic: Iterate Resources to find accessible Services
             $accessibleServiceSlugs = collect(\Filament\Facades\Filament::getResources())
                 ->filter(function ($resource) {
                     return $resource::canAccess();
@@ -39,29 +38,38 @@ class SubmissionsChart extends ChartWidget
             $query->whereIn('service_id', $accessibleServices->pluck('id'));
         }
 
-        $data = Trend::model(Submission::class)
-            ->query($query)
-            ->between(
-                start: now()->startOfYear(),
-                end: now()->endOfYear(),
-            )
-            ->perMonth()
-            ->count();
+        // Group by service and count
+        $data = $query->with('service')
+            ->select('service_id', DB::raw('count(*) as total'))
+            ->groupBy('service_id')
+            ->get();
 
         return [
             'datasets' => [
                 [
-                    'label' => 'Permohonan Masuk',
-                    'data' => $data->map(fn (TrendValue $value) => $value->aggregate),
-                    'fill' => 'start',
+                    'label' => 'Jumlah Permohonan',
+                    'data' => $data->pluck('total'),
+                    'backgroundColor' => [
+                        '#3b82f6', // blue-500
+                        '#ef4444', // red-500
+                        '#10b981', // emerald-500
+                        '#f59e0b', // amber-500
+                        '#8b5cf6', // violet-500
+                        '#ec4899', // pink-500
+                        '#6366f1', // indigo-500
+                        '#14b8a6', // teal-500
+                        '#f97316', // orange-500
+                        '#84cc16', // lime-500
+                    ],
+                    'hoverOffset' => 4,
                 ],
             ],
-            'labels' => $data->map(fn (TrendValue $value) => $value->date),
+            'labels' => $data->pluck('service.name'),
         ];
     }
 
     protected function getType(): string
     {
-        return 'line';
+        return 'pie';
     }
 }

@@ -12,6 +12,8 @@ use Filament\Tables\Table;
 
 class ServiceResource extends Resource
 {
+    use \App\Filament\Traits\HasPermissionAccess;
+
     protected static ?string $model = Service::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
@@ -91,8 +93,4 @@ class ServiceResource extends Resource
         return false;
     }
 
-    public static function canAccess(): bool
-    {
-        return auth()->user()->hasRole('super admin');
-    }
 }

@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Builder;
 
 class PencantumanGelarSubmissionResource extends Resource
 {
+    use \App\Filament\Traits\HasPermissionAccess;
+
     protected static ?string $model = Submission::class;
 
     protected static ?string $navigationGroup = 'Layanan Kepegawaian';
@@ -147,10 +149,6 @@ class PencantumanGelarSubmissionResource extends Resource
             ]);
     }
 
-    public static function canAccess(): bool
-    {
-        return auth()->user()->hasRole(['super admin', 'admin kepegawaian']);
-    }
 
     public static function getRelations(): array
     {

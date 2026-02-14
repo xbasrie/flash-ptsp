@@ -16,6 +16,8 @@ use Filament\Forms\Components\FileUpload;
 
 class KubRohaniawanSubmissionResource extends Resource
 {
+    use \App\Filament\Traits\HasPermissionAccess;
+
     protected static ?string $model = Submission::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
@@ -189,10 +191,6 @@ class KubRohaniawanSubmissionResource extends Resource
         return 'warning';
     }
 
-    public static function canAccess(): bool
-    {
-        return auth()->user()->hasRole(['super admin', 'admin kub']);
-    }
 
     public static function canCreate(): bool
     {

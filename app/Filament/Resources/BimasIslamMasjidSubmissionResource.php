@@ -16,6 +16,8 @@ use Filament\Forms\Components\FileUpload;
 
 class BimasIslamMasjidSubmissionResource extends Resource
 {
+    use \App\Filament\Traits\HasPermissionAccess;
+
     protected static ?string $model = Submission::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-building-library';
@@ -223,10 +225,6 @@ class BimasIslamMasjidSubmissionResource extends Resource
         return 'warning';
     }
 
-    public static function canAccess(): bool
-    {
-        return auth()->user()->hasRole(['super admin', 'admin bimas']);
-    }
 
     public static function canCreate(): bool
     {

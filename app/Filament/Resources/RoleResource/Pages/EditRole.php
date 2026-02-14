@@ -16,4 +16,23 @@ class EditRole extends EditRecord
         parent::mount($record);
         $this->logViewAccess();
     }
+
+    protected function afterSave(): void
+    {
+        $role = $this->record;
+        $data = $this->data;
+
+        $permissions = [];
+        foreach ($data as $key => $value) {
+            if (\Illuminate\Support\Str::startsWith($key, 'permissions_') && is_array($value)) {
+                $permissions = array_merge($permissions, $value);
+            }
+        }
+
+        foreach ($permissions as $permissionName) {
+            \Spatie\Permission\Models\Permission::firstOrCreate(['name' => $permissionName]);
+        }
+
+        $role->syncPermissions($permissions);
+    }
 }

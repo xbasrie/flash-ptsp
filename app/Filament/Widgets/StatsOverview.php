@@ -13,21 +13,36 @@ class StatsOverview extends BaseWidget
     {
         $user = Auth::user();
         $query = Submission::query();
+        $totalServices = \App\Models\Service::count();
+        $accessibleServicesCount = $totalServices;
 
-        if ($user->hasRole('admin bimas')) {
-            $query->whereHas('service', fn($q) => $q->where('slug', 'like', 'bimas-%'));
-        } elseif ($user->hasRole('admin kub')) {
-            $query->whereHas('service', fn($q) => $q->where('slug', 'like', 'kub-%'));
-        } elseif ($user->hasRole('admin zawa')) {
-            $query->whereHas('service', fn($q) => $q->where('slug', 'like', 'zawa-%'));
-        } elseif ($user->hasRole('admin kepegawaian')) {
-            $query->whereHas('service', fn($q) => $q->where(function ($query) {
-                $query->where('slug', 'not like', 'bimas-%')
-                      ->where('slug', 'not like', 'kub-%')
-                      ->where('slug', 'not like', 'zawa-%');
-            }));
+        if (! $user->hasRole('super admin')) {
+            // NEW APPROACH: Iterate Resources to find accessible Services
+            // This is more robust than guessing permission names.
+            $accessibleServiceSlugs = collect(\Filament\Facades\Filament::getResources())
+                ->filter(function ($resource) {
+                    // Only check resources that report they can be accessed
+                    return $resource::canAccess();
+                })
+                ->map(function ($resource) {
+                    // Get the URL slug of the resource
+                    return $resource::getSlug();
+                })
+                ->filter(function ($slug) {
+                    // Only include resources that look like submissions (e.g., 'cuti-submissions')
+                    return \Illuminate\Support\Str::endsWith($slug, '-submissions');
+                })
+                ->map(function ($slug) {
+                    // Extract the service slug (e.g., 'cuti')
+                    return \Illuminate\Support\Str::replaceLast('-submissions', '', $slug);
+                });
+
+            // Find valid services matching these slugs
+            $accessibleServices = \App\Models\Service::whereIn('slug', $accessibleServiceSlugs)->get();
+            
+            $query->whereIn('service_id', $accessibleServices->pluck('id'));
+            $accessibleServicesCount = $accessibleServices->count();
         }
-        // Super Admin sees everything by default (no filter added)
 
         return [
             Stat::make('Total Permohonan', $query->count())
@@ -44,6 +59,11 @@ class StatsOverview extends BaseWidget
                 ->description('Permohonan selesai diproses')
                 ->descriptionIcon('heroicon-m-check-circle')
                 ->color('success'),
+
+            Stat::make('Layanan Tersedia', $accessibleServicesCount)
+                ->description('Layanan yang dapat diakses')
+                ->descriptionIcon('heroicon-m-rectangle-stack')
+                ->color('info'),
         ];
     }
 }

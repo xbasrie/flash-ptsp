@@ -17,6 +17,8 @@ use Illuminate\Support\HtmlString;
 
 class ZawaTunaiSubmissionResource extends Resource
 {
+    use \App\Filament\Traits\HasPermissionAccess;
+
     protected static ?string $model = Submission::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-banknotes';
@@ -233,10 +235,6 @@ class ZawaTunaiSubmissionResource extends Resource
         return 'warning';
     }
 
-    public static function canAccess(): bool
-    {
-        return auth()->user()->hasRole(['super admin', 'admin zawa']);
-    }
 
     public static function canCreate(): bool
     {
